@@ -47,6 +47,14 @@ var Users = [];
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
+app.get('/menu', function(req, res) {
+    res.send('/menu');
+});
+
+app.get('/promotions', function(req, res) {
+    res.send('/promotions');
+});
+
 // create a GET route
 app.get('/home', function (req, res) {
     var input = "SELECT * FROM managers WHERE username='" + req.query.username + "' AND password='" + req.query.password + "';";
