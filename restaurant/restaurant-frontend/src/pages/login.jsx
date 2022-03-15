@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import DirectButton from "../components/directButton";
 
-
-
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
