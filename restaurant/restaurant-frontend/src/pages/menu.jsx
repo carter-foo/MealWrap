@@ -67,33 +67,49 @@ class Menu extends React.Component {
     super(props);
     this.state = {
       selectedCategory: "Burgers",
+      selectedIndex: 0,
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.categoryEditorChange = this.categoryEditorChange.bind(this);
   }
 
-  handleChange(e) {
+  handleChange(e, i) {
     console.log("Category selected!");
     this.setState({ selectedCategory: e.target.value });
+    this.setState({ selectedIndex: i});
+    this.forceUpdate();
+    this.categoryEditorChange();
+  }
+
+  categoryEditorChange(ob)
+  {
+    var v = menu.categories.find((obj) => obj.name == this.state.selectedCategory);
+    ob.state.category=v;
+    console.log("to");
   }
 
   render() {
+    var i = 0;
+
     return (
       <div>
         <h1>Edit the menu</h1>
-        <select
-          value={this.state.selectedCategory}
-          onChange={this.handleChange}
-        >
-          {menu.categories.map((obj) => (
-            <option value={obj.name}>{obj.name}</option>
+        <select value={this.state.selectedCategory} onChange={(e) => this.handleChange(e)}>
+
+          {menu.categories.map((obj, i) => (
+            <option value={obj.name} key={i} readOnly>{obj.name}</option>
           ))}
+
         </select>
+
         <CategoryEditor
           category={menu.categories.find(
             (obj) => obj.name == this.state.selectedCategory
-          )}
+          )} id="items"
+          func={this.categoryEditorChange}
         />
+
       </div>
     );
   }

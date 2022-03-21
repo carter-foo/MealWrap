@@ -4,7 +4,8 @@ import DirectButton from "../components/directButton";
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: '', password: '', text1: ''};
+    this.state = {username: '', password: '', text1: '', passwordShown: false, setPasswordShown: false};
+    
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -17,6 +18,7 @@ export default class Login extends React.Component {
 
   handlePasswordChange(event) {
     this.setState({password: event.target.value});
+    this.setState({passwordShown: false});
   }
 
   handleText1Change(event) {
@@ -35,7 +37,7 @@ export default class Login extends React.Component {
             <br />
             <label>Password:</label>
             <br />
-            <input value={this.state.password} onChange={this.handlePasswordChange}/>
+            <input value={this.state.password} type={this.state.passwordShown ? "text" : "password"} onChange={this.handlePasswordChange}/>
           </form>
           <DirectButton text="Submit" route="/home" state={this.state} func={this.handleText1Change}/>
           <p>{this.state.text1}</p>
