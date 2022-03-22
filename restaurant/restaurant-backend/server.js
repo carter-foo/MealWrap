@@ -47,11 +47,46 @@ var Users = [];
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-app.get('/menu', function(req, res) {
-    res.send('/menu');
+app.get('/menu', function (req, res) {
+    console.log(req.query.save)
+    // When the page is loaded
+    if (req.query.save == null) {
+        res.send('/menu');
+    }
+    // Saving data
+    else if (req.query.save == "true") {
+        console.log(req.query.items);
+        req.query.items.forEach((row) => {
+            db.run(row, [], (err, rows) => {
+                if (err) {
+                    throw err;
+                }
+            });
+        });
+        res.send('');
+    }
+    // Getting the data if already on page
+    else {
+        var input = "SELECT * FROM products ;";
+        results = new Array();
+
+        db.all(input, [], (err, rows) => {
+            if (err) {
+                throw err;
+            }
+
+            rows.forEach((row) => {
+                if (row != null) {
+                    results.push(row);
+                }
+            });
+
+            res.send(results);
+        });
+    }
 });
 
-app.get('/promotions', function(req, res) {
+app.get('/promotions', function (req, res) {
     res.send('/promotions');
 });
 

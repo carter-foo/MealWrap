@@ -1,6 +1,9 @@
 import React from "react";
 import CategoryEditor from "../components/menu/categoryEditor";
+import { callAPI } from "../App.js";
+import DirectButton from "../components/directButton";
 
+/*
 const menu = {
   description: "This is the menu for this restaurant",
   categories: [
@@ -61,32 +64,106 @@ const menu = {
     },
   ],
 };
+*/
+
+const menu = {
+  description: "This is the menu for this restaurant",
+  categories: []
+};
 
 class Menu extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       selectedCategory: "Burgers",
       selectedIndex: 0,
+      save: false,
+      description: "This is the menu for this restaurant",
+      categories: [{
+        name: "Burgers",
+        items: [
+          {
+            name: "McSingle",
+            description: "description",
+            price: 5.0,
+          },
+          {
+            name: "McDouble",
+            description: "description",
+            price: 6.25,
+          },
+          {
+            name: "McTriple",
+            description: "description",
+            price: 7.5,
+          },
+        ],
+      },],
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.categoryEditorChange = this.categoryEditorChange.bind(this);
+    //this.componentDidMount = this.componentDidMount(this);
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData() {
+    var s = this.state;
+    var t = this;
+
+    callAPI('/menu', this.state).then(function (r) {
+      //console.log("yo");
+      if (r != 'invalid') {
+        //menu.categories=r;
+        //var v = r;
+        var c = new Array();
+
+        r.forEach((row) => {
+          var f;
+          if (c.length != 0) {
+            if ((f = c.findIndex(ro => ro.name == row.category)) == 0) {
+              c[f].items.push(row);
+            }
+            else
+            {
+              c.push({ name: row.category, items: [row] });
+              //console.log(f);
+            }
+          }
+          else {
+            c.push({ name: row.category, items: [row] });
+          }
+        })
+
+        /*
+        var c = [{
+          name: "Burgers",
+          items: v,
+        }]
+  */
+        s.categories = c;
+        t.setState({ categories: c });
+      }
+      else {
+        console.log("invalid");
+      }
+    })
   }
 
   handleChange(e, i) {
     console.log("Category selected!");
     this.setState({ selectedCategory: e.target.value });
-    this.setState({ selectedIndex: i});
-    this.forceUpdate();
-    this.categoryEditorChange();
+    this.setState({ selectedIndex: i });
+    //this.categoryEditorChange();
   }
 
-  categoryEditorChange(ob)
-  {
-    var v = menu.categories.find((obj) => obj.name == this.state.selectedCategory);
-    ob.state.category=v;
-    console.log("to");
+  categoryEditorChange(ob) {
+    var v = this.state.categories.find((obj) => obj.name == this.state.selectedCategory);
+    ob.state.category = v;
   }
 
   render() {
@@ -97,19 +174,19 @@ class Menu extends React.Component {
         <h1>Edit the menu</h1>
         <select value={this.state.selectedCategory} onChange={(e) => this.handleChange(e)}>
 
-          {menu.categories.map((obj, i) => (
+          {this.state.categories.map((obj, i) => (
             <option value={obj.name} key={i} readOnly>{obj.name}</option>
           ))}
 
         </select>
 
         <CategoryEditor
-          category={menu.categories.find(
+          category={this.state.categories.find(
             (obj) => obj.name == this.state.selectedCategory
           )} id="items"
           func={this.categoryEditorChange}
         />
-
+        <DirectButton text="Save" route="/menu" state={this.state} func={this.handleText1Change}/>
       </div>
     );
   }
