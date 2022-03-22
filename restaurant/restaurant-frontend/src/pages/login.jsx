@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DirectButton from "../components/directButton";
+import APIDirectButton from "../components/apiDirectButton";
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -39,7 +39,7 @@ export default class Login extends React.Component {
             <br />
             <input value={this.state.password} type={this.state.passwordShown ? "text" : "password"} onChange={this.handlePasswordChange}/>
           </form>
-          <DirectButton text="Submit" route="/home" state={this.state} func={this.handleText1Change}/>
+          <APIDirectButton text="Submit" route="/home" state={this.state} func={this.handleText1Change}/>
           <p>{this.state.text1}</p>
         </div>
       </div>

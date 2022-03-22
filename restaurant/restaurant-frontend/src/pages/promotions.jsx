@@ -1,3 +1,4 @@
+import DirectButton from "../components/directButton";
 import Promotion from "../components/promotions/promotion";
 
 export default function Promotions() {
@@ -24,6 +25,7 @@ export default function Promotions() {
       {promotionList.map((obj, i) => {
         return <Promotion data={obj} key={i} />;
       })}
+      <DirectButton route='/home' text='Cancel' />
     </div>
   );
 }

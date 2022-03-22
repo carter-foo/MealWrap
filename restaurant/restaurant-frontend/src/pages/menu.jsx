@@ -1,6 +1,7 @@
 import React from "react";
 import CategoryEditor from "../components/menu/categoryEditor";
-import { callAPI } from "../App.js";
+import { callAPI } from "../scripts/callAPI.js";
+import APIDirectButton from "../components/apiDirectButton";
 import DirectButton from "../components/directButton";
 
 /*
@@ -186,7 +187,8 @@ class Menu extends React.Component {
           )} id="items"
           func={this.categoryEditorChange}
         />
-        <DirectButton text="Save" route="/menu" state={this.state} func={this.handleText1Change}/>
+        <APIDirectButton text="Save" route="/menu" state={this.state} func={this.handleText1Change}/>
+        <DirectButton route='/home' text='Cancel' />
       </div>
     );
   }
