@@ -64,7 +64,8 @@ const NBLeft = () => {
                 <img src={downIcon} alt='' />
             </AddressTitle>
             <NewDropdown
-                // width='px'
+                width='300px'
+                height="300px"
                 visible={visible}
                 onClose={onClose}
                 // getContainer={maskDom}

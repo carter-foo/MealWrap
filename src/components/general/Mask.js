@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
 import styled from 'styled-components/macro';
+import { createPortal } from 'react-dom';
 
 const MaskStyle = styled.div`
     display: ${props => props.display};
@@ -19,7 +19,7 @@ const MaskStyle = styled.div`
 
 const Mask = props => {
     const { clickFunc, display } = props;
-    console.log(display);
+    // console.log(display);
     const node = useRef(document.createElement('div'));
     const container = props.container;
     useEffect(() => {
