@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
-import logo from '@/assets/icons/closeIcon.svg'
+import logo from '@/assets/icons/closeIcon.svg';
 import DropdownMask from './Mask';
 // * @param {destroyOnClose} bool 关闭时销毁里面的子元素
 // * @param {drawerStyle} object 用来设置抽屉弹出层样式
@@ -21,20 +21,22 @@ import DropdownMask from './Mask';
  */
 
 const DropdownWrap = styled.div`
-    width: ${props => props.width};
-    overflow: hidden;
+    /* width: ${props => props.width}; */
+    /* overflow: hidden; */
     z-index: ${props => props.zIndex};
     position: absolute;
     /* top: 100px; */
     background-color: red;
 `;
 
-export const DropdownContent = styled.div`
-    width: 300px;
-    height: 300px;
+const DropdownContent = styled.div`
+    width: ${props => props.width};
+    height: ${props => props.height};
+    overflow:hidden;
 `;
 
 const CloseBtn = styled.div`
+    display: ${props => (props.display==='true' ? 'block' : 'none')};
     width: 15px;
     height: 15px;
     position: absolute;
@@ -54,15 +56,15 @@ const CloseBtn = styled.div`
     }
 `;
 
-const Dropdown = (props) => {
+const Dropdown = props => {
     const {
         contentClassName,
         visibleCloseIcon = true,
         getContainer = document.getElementById('root'),
         maskClosable = true,
         visibleMask = true,
-        // width = '300px',
-        // height = '300px',
+        width = '300px',
+        height = '300px',
         zIndex = 2,
         onClose,
         children,
@@ -93,24 +95,17 @@ const Dropdown = (props) => {
     };
 
     /* Handle events ---------------------------------------- */
+    // width={visible ? 'unset' : '0px'}
     return (
-        <DropdownWrap
-            width={visible ? 'unset' : '0px'}
-            zIndex={zIndex}
-            className={props.className}
-        >
+        <DropdownWrap zIndex={zIndex} className={props.className}>
             {!!visibleMask && (
-                <DropdownMask
-                    clickFunc={maskClosable ? handleClose : null}
-                    display={visible ? 'block' : 'none'}
-                    container={container}
-                ></DropdownMask>
+                <DropdownMask clickFunc={maskClosable ? handleClose : null} display={visible ? 'block' : 'none'} container={container}></DropdownMask>
             )}
-            <DropdownContent className='dd_content'>
+            <DropdownContent className="dd_content" width={visible ? width : '0px'} height={visible ? height : '0px'}>
                 {children}
                 {!!visibleCloseIcon && (
-                    <CloseBtn onClick={handleClose}>
-                        <img src={logo} alt='close' />
+                    <CloseBtn onClick={handleClose} display={visible.toString()}>
+                        <img src={logo} alt="close" />
                     </CloseBtn>
                 )}
             </DropdownContent>
