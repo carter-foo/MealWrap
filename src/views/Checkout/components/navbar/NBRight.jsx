@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import loginIcon from '@/assets/icons/loginIcon.svg';
-import alertIcon from '@/assets/icons/alert.svg';
-import cartIcon from '@/assets/icons/cart.svg';
+// import alertIcon from '@/assets/icons/alert.svg';
+// import cartIcon from '@/assets/icons/cart.svg';
 import RoundIcon from '@/components/general/RoundIcon';
 
 const Wrapper = styled.div`
