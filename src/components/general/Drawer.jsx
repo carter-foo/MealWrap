@@ -37,7 +37,8 @@ const DrawerContentContainer = styled.div`
     /* position:relative; */
     width: ${props => props.width};
     height: ${props => props.height};
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 `;
 
 const CloseBtn = styled.div`
@@ -65,15 +66,16 @@ const DrawerContent = props => {
     const {
         // visibleCloseIcon = false,
         // maskClosable = true,
-        width = '300px',
-        height = '300px',
+        className,
+        width = '100%',
+        height = '100%',
         zIndex = 2,
         children,
         // destroyOnClose,
     } = props;
 
     return (
-        <DrawerContentWrap zIndex={zIndex} className={props.className}>
+        <DrawerContentWrap zIndex={zIndex} className={className}>
             <DrawerContentContainer width={!!width ? width : 'unset'} height={!!height ? height : 'unset'}>
                 {children}
                 {/* {!!visibleCloseIcon && (
@@ -108,39 +110,40 @@ const MaskStyle = styled.div`
 `;
 
 const Drawer = props => {
-    const { onClose, visible, children } = props;
-
-    // let [visible, setVisible] = useState(props.visible);
-
-    // useEffect(() => {
-    //     setVisible(props.visible);
-    // }, [props.visible]);
+    const { onClose, visible, children, className } = props;
 
     const handleClose = () => {
-        // setVisible(false);
         onClose && onClose();
     };
 
-    const node = useRef(document.createElement('div'));
-    const container = props.container || document.getElementById('root');
+    // const node = useRef(document.createElement('div'));
+    // const container = props.container || document.getElementById('root');
 
-    useEffect(() => {
-        console.log('container in mask component', container);
-        let appendedChild = !!container && container.appendChild(node.current);
-        return () => {
-            return !!appendedChild === true ? !!container && container.removeChild(appendedChild) : undefined;
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // useEffect(() => {
+    //     console.log('container in mask component', container);
+    //     let appendedChild = !!container && container.appendChild(node.current);
+    //     return () => {
+    //         return !!appendedChild === true ? !!container && container.removeChild(appendedChild) : undefined;
+    //     };
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
 
-    return createPortal(
-        <DrawerWrapper visible={visible}>
+    // return createPortal(
+    //     <DrawerWrapper visible={visible} className={className}>
+    //         <MaskStyle onClick={handleClose}></MaskStyle>
+    //         <DrawerContent>
+    //             {children}
+    //         </DrawerContent>
+    //     </DrawerWrapper>,
+    //     node.current,
+    // );
+    return (
+        <DrawerWrapper visible={visible} className={className}>
             <MaskStyle onClick={handleClose}></MaskStyle>
             <DrawerContent>
                 {children}
             </DrawerContent>
-        </DrawerWrapper>,
-        node.current,
+        </DrawerWrapper>
     );
 };
 

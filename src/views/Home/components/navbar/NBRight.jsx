@@ -6,6 +6,7 @@ import cartIcon from '@/assets/icons/cart.svg';
 import RoundIcon from '@/components/general/RoundIcon';
 import ShoppingCart from './shoppingCart/ShoppingCart';
 
+
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
@@ -32,6 +33,8 @@ const Wrapper = styled.div`
             margin-right: 10px;
         }
     }
+
+    
 `;
 
 const Icon = styled(RoundIcon)`
@@ -45,7 +48,7 @@ const Icon = styled(RoundIcon)`
 `;
 
 const NBRight = () => {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(true);
 
     const onClose = () => {
         setVisible(false);
@@ -83,7 +86,8 @@ const NBRight = () => {
                     <p>Log In</p>
                 </div>
             </div>
-            <ShoppingCart onClose={onClose} visible={visible}></ShoppingCart>
+
+            <ShoppingCart onClose={onClose} visible={visible} className="shoppingCart" />
         </Wrapper>
     );
 };
