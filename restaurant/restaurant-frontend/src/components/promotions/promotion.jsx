@@ -54,7 +54,8 @@ export default class promotion extends React.Component {
         <th>{this.state.data.priceReduction}% off</th>
         <th>
           <EditDialog
-            handleSubmitParent={this.handleDialogForm.bind(this)}
+            openButton={<Button>Edit</Button>}
+            handleSubmit={this.handleDialogForm.bind(this)}
             data={this.state.data}
           />
         </th>
@@ -66,7 +67,7 @@ export default class promotion extends React.Component {
               <DialogTitle>Confirm promotion deletion</DialogTitle>
               <DialogContent>
                 <DialogContentText>
-                  Are you sure you wish to delete this promotion? This action isn't reversible.
+                  Are you sure you wish to remove this promotion?
                 </DialogContentText>
               </DialogContent>
               <DialogActions>

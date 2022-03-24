@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 export default function DirectButton (props) {
   let navigate = useNavigate();
@@ -7,11 +8,11 @@ export default function DirectButton (props) {
   };
 
   return (
-    <button onClick = {() => {
+    <Button variant="outlined" onClick = {() => {
       routeChange(props.route);
     }}>
       {props.text}
-    </button>
+    </Button>
   )
 
 }

@@ -11,10 +11,34 @@ export default function EditDialog(props) {
   const categories = ["Burgers", "Drinks", "Sides"];
 
   const [open, setOpen] = React.useState(false);
-  const [title, setTitle] = React.useState(props.data.title);
-  const [description, setDescription] = React.useState(props.data.description);
-  const [category, setCategory] = React.useState(props.data.category);
-  const [deal, setDeal] = React.useState(props.data.priceReduction);
+  const [title, setTitle] = React.useState(() => {
+    if(props.data !== undefined) {
+      return props.data.title;
+    } else {
+      return "";
+    };
+  });
+  const [description, setDescription] = React.useState(() => {
+    if(props.data !== undefined) {
+      return props.data.description;
+    } else {
+      return "";
+    };
+  });
+  const [category, setCategory] = React.useState(() => {
+    if(props.data !== undefined) {
+      return props.data.category;
+    } else {
+      return categories[0];
+    };
+  });
+  const [deal, setDeal] = React.useState(() => {
+    if(props.data !== undefined) {
+      return props.data.priceReduction;
+    } else {
+      return 10;
+    };
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -40,7 +64,7 @@ export default function EditDialog(props) {
     setDeal(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmitWrapper = (event) => {
     event.preventDefault();
     setOpen(false);
     const newData = {
@@ -49,17 +73,18 @@ export default function EditDialog(props) {
       category: category,
       priceReduction: deal,
     };
-    props.handleSubmitParent(event, newData);
+    props.handleSubmit(event, newData);
   };
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>EDIT</Button>
+      {/* <Button onClick={handleClickOpen}>{props.openButtonText}</Button> */}
+      {React.cloneElement(props.openButton, {onClick: handleClickOpen})}
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Edit promotion</DialogTitle>
         <DialogContent>
           <DialogContentText component={"div"}>
-            <form onSubmit={handleSubmit} id="promoform">
+            <form onSubmit={handleSubmitWrapper} id="promoform">
               <label>Title: </label>
               <input type="text" value={title} onChange={handleTitleChange} />
               <br />
