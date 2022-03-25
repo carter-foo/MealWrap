@@ -38,7 +38,8 @@ const DrawerContentContainer = styled.div`
     width: ${props => props.width};
     height: ${props => props.height};
     overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-y: overlay; */
+    /* overflow-x: hidden; */
 `;
 
 const CloseBtn = styled.div`

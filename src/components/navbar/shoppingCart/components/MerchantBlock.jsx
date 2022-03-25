@@ -15,6 +15,32 @@ const Container = styled.div`
     }
 `;
 
+
+// const ccc = {
+//     merchantName: "Cactus Club Cafe",
+//     items: [{
+//         name:"lalalaDddddd",
+//         price:"10.69",
+//         amount:1
+//     },{
+//         name:"lalala",
+//         price:"10.69",
+//         amount:1
+//     },{
+//         name:"lalala",
+//         price:"10.69",
+//         amount:1
+//     },{
+//         name:"lalala",
+//         price:"10.69",
+//         amount:1
+//     },{
+//         name:"lalala",
+//         price:"10.69",
+//         amount:1
+//     }]
+// }
+
 const MerchantBlock = ({ merchantName }) => {
     const [infoArr,setInfoArr] = useState(() => [{
         name:"lalalaDddddd",

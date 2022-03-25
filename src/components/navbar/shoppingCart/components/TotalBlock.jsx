@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components/macro';
 const Wrapper = styled.div`
     margin-top: 12px;
@@ -41,6 +42,7 @@ const Container = styled.div`
 `;
 
 const TotalBlock = ({ merchantName }) => {
+    const navigate = useNavigate();
     return (
         <Wrapper>
             <Container>
@@ -48,7 +50,7 @@ const TotalBlock = ({ merchantName }) => {
                     <div className="prompt">Order Total</div>
                     <div className="title">$38.48</div>
                 </div>
-                <div className="checkoutBtn">Go To Checkout</div>
+                <div className="checkoutBtn" onClick={() => navigate('/checkout')}>Go To Checkout</div>
             </Container>
         </Wrapper>
     );

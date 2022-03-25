@@ -21,10 +21,10 @@ const Wrapper = styled.div`
 `;
 
 const CateCube = props => {
-    const { className, title, iconSrc, selected = false, width, iconSize } = props;
+    const { className, title, iconSrc, selected = false, width, iconSize, onClick } = props;
     return (
         <>
-            <Wrapper className={className} selected={selected} width={width}>
+            <Wrapper className={className} selected={selected} width={width} onClick={onClick}>
                 <Icon outerSize={iconSize || '25.6px'} src={iconSrc} />
                 <div className="title">{title}</div>
             </Wrapper>

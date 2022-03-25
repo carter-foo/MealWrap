@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import NavBar from './components/navbar/NavBar';
+import NavBar from '@/components/navbar/NavBar';
 import MainContent from './components/mainContentBlock/MainContent';
 
 const Home = () => {

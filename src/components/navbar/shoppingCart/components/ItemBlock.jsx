@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 const Wrapper = styled.div``;
 const Container = styled.div`
-    width: 327px;
+    width: 100%;
     height: 92px;
     /* background-color: skyblue; */
     border: 1px #EBEBEB solid;

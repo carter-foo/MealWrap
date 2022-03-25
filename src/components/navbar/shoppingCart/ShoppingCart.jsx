@@ -8,6 +8,14 @@ const Container = styled.div`
     .shoppingCartElements {
         width: 100%;
         padding-bottom: 50px;
+        margin-right: 30px;
+    }
+
+    > .discountimg{
+        width: 100%;
+        svg{
+            width: 100%;
+        }
     }
 `;
 

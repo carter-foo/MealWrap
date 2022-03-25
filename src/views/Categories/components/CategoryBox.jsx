@@ -30,12 +30,12 @@ const Container = styled.div`
     }
 `;
 
-const CategoryBox = ({imgUrl, children }) => {
+const CategoryBox = ({imgUrl, children,onClick }) => {
     // console.log(imgUrl);
     return (
-        <Wrapper>
+        <Wrapper onClick={onClick}>
             <Container imgUrl={imgUrl}>
-                <div className="overlay"></div>
+                <div className="overlay" ></div>
                 <div className="title">{children}</div>
             </Container>
         </Wrapper>

@@ -2,6 +2,7 @@ import Login from '../components/Login';
 import Home from './Home/Home';
 import Checkout from './Checkout/Checkout';
 import Categories from './Categories/Categories';
+import MerchantsByCates from './MerchantsByCates/MerchantsByCates';
 const routes = [
     {
         path: '/login',
@@ -18,6 +19,10 @@ const routes = [
     {
         path: '/categories',
         element: <Categories />,
+    },
+    {
+        path: '/merchants',
+        element: <MerchantsByCates />,
     },
 ];
 

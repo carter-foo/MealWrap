@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import NavBar from '../Home/components/navbar/NavBar';
+import NavBar from '@/components/navbar/NavBar';
 import MainContent from './components/MainContent';
 
 const Wrapper = styled.div`
