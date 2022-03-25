@@ -12,32 +12,32 @@ export default function EditDialog(props) {
 
   const [open, setOpen] = React.useState(false);
   const [title, setTitle] = React.useState(() => {
-    if(props.data !== undefined) {
+    if (props.data !== undefined) {
       return props.data.title;
     } else {
       return "";
-    };
+    }
   });
   const [description, setDescription] = React.useState(() => {
-    if(props.data !== undefined) {
+    if (props.data !== undefined) {
       return props.data.description;
     } else {
       return "";
-    };
+    }
   });
   const [category, setCategory] = React.useState(() => {
-    if(props.data !== undefined) {
+    if (props.data !== undefined) {
       return props.data.category;
     } else {
       return categories[0];
-    };
+    }
   });
   const [deal, setDeal] = React.useState(() => {
-    if(props.data !== undefined) {
+    if (props.data !== undefined) {
       return props.data.priceReduction;
     } else {
       return 10;
-    };
+    }
   });
 
   const handleClickOpen = () => {
@@ -79,10 +79,10 @@ export default function EditDialog(props) {
   return (
     <div>
       {/* <Button onClick={handleClickOpen}>{props.openButtonText}</Button> */}
-      {React.cloneElement(props.openButton, {onClick: handleClickOpen})}
-      <Dialog open={open} onClose={handleClose}>
+      {React.cloneElement(props.openButton, { onClick: handleClickOpen })}
+      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
         <DialogTitle>Edit promotion</DialogTitle>
-        <DialogContent>
+        <DialogContent className="promo-editor">
           <DialogContentText component={"div"}>
             <form onSubmit={handleSubmitWrapper} id="promoform">
               <label>Title: </label>
@@ -90,6 +90,7 @@ export default function EditDialog(props) {
               <br />
               <label>Description: </label>
               <textarea
+                className="promo-editor-description"
                 id="description"
                 value={description}
                 onChange={handleDescriptionChange}

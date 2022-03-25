@@ -33,21 +33,20 @@ class CategoryEditor extends React.Component {
     this.handlePriceChange = this.handlePriceChange.bind(this);
   }
 
-  handleItemNameChange(event, i)
-  {
-    this.setState ({[this.state.category.items[i].name]: event.target.value});
+  handleItemNameChange(event, i) {
+    this.setState({ [this.state.category.items[i].name]: event.target.value });
     this.state.category.items[i].name = event.target.value;
   }
 
-  handleDescriptionChange(event, i)
-  {
-    this.setState ({[this.state.category.items[i].description]: event.target.value});
+  handleDescriptionChange(event, i) {
+    this.setState({
+      [this.state.category.items[i].description]: event.target.value,
+    });
     this.state.category.items[i].description = event.target.value;
   }
-23
-  handlePriceChange(event, i)
-  {
-    this.setState ({[this.state.category.items[i].price]: event.target.value});
+  23;
+  handlePriceChange(event, i) {
+    this.setState({ [this.state.category.items[i].price]: event.target.value });
     this.state.category.items[i].price = event.target.value;
   }
 
@@ -57,7 +56,7 @@ class CategoryEditor extends React.Component {
     return (
       <div>
         <h3>{this.state.category.name}</h3>
-        <table>
+        <table className="menu-editor">
           <tbody>
             <tr>
               <th>Item</th>
@@ -69,6 +68,7 @@ class CategoryEditor extends React.Component {
                 <tr key={i}>
                   <td>
                     <input
+                      className="menu-field"
                       type="input"
                       value={item.name}
                       onChange={(e) => this.handleItemNameChange(e, i)}
@@ -76,12 +76,17 @@ class CategoryEditor extends React.Component {
                   </td>
                   <td>
                     <input
+                      className="menu-field"
                       value={item.description}
                       onChange={(e) => this.handleDescriptionChange(e, i)}
                     />
                   </td>
                   <td>
-                    <input value={item.price} onChange={(e) => this.handlePriceChange(e, i)} />
+                    <input
+                      className="menu-field"
+                      value={item.price}
+                      onChange={(e) => this.handlePriceChange(e, i)}
+                    />
                   </td>
                 </tr>
               );

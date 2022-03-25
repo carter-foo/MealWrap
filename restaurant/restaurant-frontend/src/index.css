@@ -62,6 +62,28 @@ code {
   border: 5px solid #cc213d;
 }
 
+.menu-editor {
+  width: 100%;
+}
+
+.menu-field {
+  width: calc(100% - 25px);
+}
+
+.promo-table {
+  width: 100%;
+}
+
+.promo-editor {
+  height: 50vh;
+  /* width: 25vw; */
+}
+
+.promo-editor-description {
+  width: 100%;
+  height: 30vh;
+}
+
 input {
   padding:5px;
   margin:5px;
@@ -72,5 +94,9 @@ tr {
 }
 
 th {
+  padding: 10px;
+}
+
+td {
   padding: 10px;
 }

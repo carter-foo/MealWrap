@@ -47,18 +47,18 @@ export default class promotion extends React.Component {
   render() {
     return (
       <tr>
-        <th>{this.state.data.title}</th>
-        <th>{this.state.data.description}</th>
-        <th>{this.state.data.category}</th>
-        <th>{this.state.data.priceReduction}% off</th>
-        <th>
+        <td>{this.state.data.title}</td>
+        <td>{this.state.data.description}</td>
+        <td>{this.state.data.category}</td>
+        <td>{this.state.data.priceReduction}% off</td>
+        <td>
           <EditDialog
             openButton={<Button>Edit</Button>}
             handleSubmit={this.handleDialogForm.bind(this)}
             data={this.state.data}
           />
-        </th>
-        <th>
+        </td>
+        <td>
           <IconButton onClick={this.handleOpen.bind(this)}>
             <DeleteIcon />
           </IconButton>
@@ -74,7 +74,7 @@ export default class promotion extends React.Component {
                 <Button onClick={this.handleClose.bind(this)}>Cancel</Button>
               </DialogActions>
             </Dialog>
-        </th>
+        </td>
       </tr>
     );
   }

@@ -58,7 +58,7 @@ export default function Promotions() {
           }
           handleSubmit={handleAddPromotion}
         />
-        <table>
+        <table className="promo-table">
           <thead>
             <tr>
               <th>Name of promotion</th>
@@ -80,8 +80,8 @@ export default function Promotions() {
             })}
           </tbody>
         </table>
-        <DirectButton route="/home" text="Home" />
         <Button variant="outlined">Save changes</Button>
+        <DirectButton route="/home" text="Cancel" />
       </div>
     </div>
   );

@@ -187,7 +187,7 @@ class Menu extends React.Component {
           )} id="items"
           func={this.categoryEditorChange}
         />
-        <APIDirectButton text="Save" route="/menu" state={this.state} func={this.handleText1Change}/>
+        <APIDirectButton text="Save changes" route="/menu" state={this.state} func={this.handleText1Change}/>
         <DirectButton route='/home' text='Cancel' />
       </div>
     );
