@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import APIDirectButton from "../components/apiDirectButton";
+import APIDirectButton from "../apiDirectButton";
 
 export default function Homepage() {
   let navigate = useNavigate();

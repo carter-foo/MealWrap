@@ -5,6 +5,7 @@ import Routing from './components/routes';
 function App() {
   return (
     <div>
+      <div className="background"/>
       <BrowserRouter>
         <Routing />
       </BrowserRouter>

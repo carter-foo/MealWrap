@@ -1,13 +1,76 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  background-image: url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg");
+  background-size: 100% 100%;
+}
+
+.page {
+  background-color: rgb(255, 255, 255);
+  height:100vh;
+  position:absolute;
+  left: 25%;
+  width: 50%;
+  min-height: 100vh;
+  overflow-y:scroll;
+  -ms-overflow-style: none;
+  scrollbar-width:none;
+}
+.pageborder {
+  padding:2%
+}
+
+.login-box {
+  background-color: rgb(255, 255, 255);
+  border: 5px solid black;
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  top: 25%;
+  height: 50%;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 2rem;
+}
+
+.login-content {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.navbar {
+  padding: 2%;
+  background-color: #F43F5E;
+  color: #FFFFFF;
+  border: 5px solid #cc213d;
+}
+
+input {
+  padding:5px;
+  margin:5px;
+}
+
+tr {
+  background-color: #eeeeee;
+}
+
+th {
+  padding: 10px;
 }

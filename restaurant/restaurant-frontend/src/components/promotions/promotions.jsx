@@ -1,10 +1,10 @@
 import React from "react";
-import DirectButton from "../components/directButton";
-import Promotion from "../components/promotions/promotion";
+import DirectButton from "../directButton";
+import Promotion from "./promotion";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
-import PromoEditor from "../components/promotions/promoEditor";
-import uuid from "react-uuid"
+import PromoEditor from "./promoEditor";
+import uuid from "react-uuid";
 
 export default function Promotions() {
   //get list of promotions active at the restaurant that's logged in, via an API call (for now just use this example object)
@@ -47,40 +47,42 @@ export default function Promotions() {
   return (
     //iterate through list of promotions, render each as a promotion component
     <div>
-      <h1>Current promotions:</h1>
-      {/* <Button variant="outlined" startIcon={<AddIcon />}>Add new promotion</Button> */}
-      <PromoEditor
-        openButton={
-          <Button variant="outlined" startIcon={<AddIcon/>}>
-            Add promotion
-          </Button>
-        }
-        handleSubmit={handleAddPromotion}
-      />
-      <table>
-        <thead>
-          <tr>
-            <th>Name of promotion</th>
-            <th>Promotion description</th>
-            <th>Discounted category</th>
-            <th>Discount percentage</th>
-          </tr>
-        </thead>
-        <tbody>
-          {promotionList.map((obj, i) => {
-            return (
-              <Promotion
-                data={obj}
-                index={i}
-                key={obj.key}
-                handleDelete={handleDelete}
-              />
-            );
-          })}
-        </tbody>
-      </table>
-      <DirectButton route="/home" text="Home" />
-      <Button variant="outlined">Save changes</Button>
+      <div>
+        <h1>Current promotions:</h1>
+        {/* <Button variant="outlined" startIcon={<AddIcon />}>Add new promotion</Button> */}
+        <PromoEditor
+          openButton={
+            <Button variant="outlined" startIcon={<AddIcon />}>
+              Add promotion
+            </Button>
+          }
+          handleSubmit={handleAddPromotion}
+        />
+        <table>
+          <thead>
+            <tr>
+              <th>Name of promotion</th>
+              <th>Promotion description</th>
+              <th>Discounted category</th>
+              <th>Discount percentage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {promotionList.map((obj, i) => {
+              return (
+                <Promotion
+                  data={obj}
+                  index={i}
+                  key={obj.key}
+                  handleDelete={handleDelete}
+                />
+              );
+            })}
+          </tbody>
+        </table>
+        <DirectButton route="/home" text="Home" />
+        <Button variant="outlined">Save changes</Button>
+      </div>
     </div>
   );
 }

@@ -1,16 +1,17 @@
-import {Route, Routes} from 'react-router-dom';
-import Login from '../pages/login';
-import Homepage from '../pages/home';
-import Menu from '../pages/menu';
-import Promotions from '../pages/promotions';
+import { Route, Routes } from "react-router-dom";
+import Page from "../pages/page";
+import Login from "../pages/login";
+import Homepage from "./home/home";
+import Menu from "./menu/menu";
+import Promotions from "./promotions/promotions";
 
-export default function Routing () {
-    return (
-        <Routes>
-            <Route path="/" element={<Login/>}/>
-            <Route path="/home" element={<Homepage/>}/>
-            <Route path="/menu" element={<Menu/>}/>
-            <Route path="/promotions" element={<Promotions/>}/>
-        </Routes>
-    );
+export default function Routing() {
+  return (
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/home" element={<Page exactPage={<Homepage />} />} />
+      <Route path="/menu" element={<Page exactPage={<Menu />} />} />
+      <Route path="/promotions" element={<Page exactPage={<Promotions />} />} />
+    </Routes>
+  );
 }

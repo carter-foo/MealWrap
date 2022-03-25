@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.css";
 import EditDialog from "./promoEditor";
 import IconButton from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete"

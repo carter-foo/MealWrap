@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { callAPI } from "../scripts/callAPI.js";
+import Button from "@material-ui/core/Button";
 
 export default function APIDirectButton(props) {
   let navigate = useNavigate();
@@ -8,7 +9,8 @@ export default function APIDirectButton(props) {
   };
 
   return (
-    <button
+    <Button
+      variant="outlined"
       onClick={() => {
         var state;
         if (props.text == "Save")
@@ -44,6 +46,6 @@ export default function APIDirectButton(props) {
       }}
     >
       {props.text}
-    </button>
+    </Button>
   );
 }

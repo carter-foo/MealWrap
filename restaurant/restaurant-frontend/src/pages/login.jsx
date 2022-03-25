@@ -27,15 +27,15 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="login-box">
+        <div className="login-content">
           <h1>Please log in to access your restaurant</h1>
           <form>
-            <label>Username:</label>
+            <b>Username:</b>
             <br />
             <input value={this.state.username} onChange={this.handleUsernameChange} />
             <br />
-            <label>Password:</label>
+            <b>Password:</b>
             <br />
             <input value={this.state.password} type={this.state.passwordShown ? "text" : "password"} onChange={this.handlePasswordChange}/>
           </form>

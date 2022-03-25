@@ -1,8 +1,8 @@
 import React from "react";
-import CategoryEditor from "../components/menu/categoryEditor";
-import { callAPI } from "../scripts/callAPI.js";
-import APIDirectButton from "../components/apiDirectButton";
-import DirectButton from "../components/directButton";
+import CategoryEditor from "./categoryEditor";
+import { callAPI } from "../../scripts/callAPI.js";
+import APIDirectButton from "../apiDirectButton";
+import DirectButton from "../directButton";
 
 /*
 const menu = {
