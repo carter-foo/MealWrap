@@ -48,7 +48,7 @@ const Icon = styled(RoundIcon)`
 `;
 
 const NBRight = () => {
-    const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(false);
 
     const onClose = () => {
         setVisible(false);
