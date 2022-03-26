@@ -105,6 +105,10 @@ code {
   justify-content: right;
 }
 
+.logout-button {
+  float: right;
+}
+
 input {
   padding:5px;
   margin:5px;

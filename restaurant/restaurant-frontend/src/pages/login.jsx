@@ -51,7 +51,7 @@ export default class LoginClass extends React.Component {
         <div className="login-content">
           <h1>Please log in to access your restaurant</h1>
           <form>
-            <b>Username:</b>
+            <b>Phone number:</b>
             <br />
             <input
               value={this.state.username}
