@@ -1,7 +1,9 @@
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
 import styled from 'styled-components/macro';
 import ItemBlock from './ItemBlock';
 import TotalBlock from './TotalBlock';
+// import { shoppingCartArr } from '@/store/store';
+// import { useSetRecoilState } from 'recoil';
 
 export const merchantContext = createContext();
 
@@ -14,7 +16,6 @@ const Container = styled.div`
         font-weight: 600;
     }
 `;
-
 
 // const ccc = {
 //     merchantName: "Cactus Club Cafe",
@@ -41,48 +42,24 @@ const Container = styled.div`
 //     }]
 // }
 
-const MerchantBlock = ({ merchantName }) => {
-    const [infoArr,setInfoArr] = useState(() => [{
-        name:"lalalaDddddd",
-        price:"10.69",
-        amount:1
-    },{
-        name:"lalala",
-        price:"10.69",
-        amount:1
-    },{
-        name:"lalala",
-        price:"10.69",
-        amount:1
-    },{
-        name:"lalala",
-        price:"10.69",
-        amount:1
-    },{
-        name:"lalala",
-        price:"10.69",
-        amount:1
-    }]);
-
-    // useEffect(() => {
-    //     setInfoArr(oriArr => {
-    //         // let newArr = lodash.cloneDeep(oriArr);
-    //         return oriArr.filter(function(item){
-    //             return item.amount === 0;
-    //         });
-            
-    //     })
-    // }, [])
-    
-
+const MerchantBlock = ({ merchant, mIndex }) => {
     return (
-        <merchantContext.Provider value={{infoArr,setInfoArr}}>
-            <Wrapper >
+        <merchantContext.Provider value={{ mIndex }}>
+            <Wrapper>
                 <Container>
-                    <div className="merchant-link">Cactus Club Cafe</div>
+                    <div className="merchant-link">{merchant.merchantName}</div>
                     <div className="items">
-                        {infoArr.map((_,index) => {
-                            return (<ItemBlock key={index} index={index}/>)
+                        {merchant.items.map((item, index) => {
+                            return (
+                                <ItemBlock
+                                    key={index}
+                                    iIndex={index}
+                                    mIndex={mIndex}
+                                    title={item.name}
+                                    price={item.price}
+                                    amount={item.amount}
+                                />
+                            );
                         })}
                     </div>
                     <TotalBlock />

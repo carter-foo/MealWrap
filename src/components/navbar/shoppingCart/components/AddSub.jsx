@@ -1,7 +1,9 @@
 import styled from 'styled-components/macro';
-import { useContext } from 'react';
+// import lodash from 'lodash';
+import { useRecoilState } from 'recoil';
+import { scItemAmountChanging } from '@/store/store';
 import { merchantContext } from './MerchantBlock';
-import lodash from 'lodash';
+import { useContext } from 'react';
 
 const Wrapper = styled.div``;
 const Container = styled.div`
@@ -24,33 +26,28 @@ const AddButton = styled.div`
     cursor: pointer;
 `;
 
-const AddSub = ({ index }) => {
-    const { infoArr, setInfoArr } = useContext(merchantContext);
+const AddSub = ({ iIndex, amount }) => {
+    const { mIndex } = useContext(merchantContext);
+
+    const [scArr, setSCAmount] = useRecoilState(scItemAmountChanging);
 
     return (
         <Wrapper>
             <Container>
                 <SubButton
-                    onClick={() =>
-                        setInfoArr(oriArr => {
-                            let newArr = lodash.cloneDeep(oriArr);
-                            if (newArr[index].amount - 1 === 0) {
-                                newArr.splice(index, 1);
-                            } else {
-                                newArr[index].amount -= 1;
-                            }
-                            return newArr;
-                        })
-                    }
+                    onClick={() => {
+                        const oriAmount = scArr[mIndex].items[iIndex].amount;
+                        // console.log(mIndex);
+                        setSCAmount({ iIndex, mIndex, newAmount: oriAmount - 1 });
+                    }}
                 />
-                <div className="amount">{infoArr[index].amount}</div>
+                {/* {infoArr[index].amount} */}
+                <div className="amount">{amount}</div>
                 <AddButton
                     onClick={() => {
-                        setInfoArr(oriArr => {
-                            let newArr = lodash.cloneDeep(oriArr);
-                            newArr[index].amount += 1;
-                            return newArr;
-                        });
+                        const oriAmount = scArr[mIndex].items[iIndex].amount;
+                        // console.log(mIndex);
+                        setSCAmount({ iIndex, mIndex, newAmount: oriAmount + 1 });
                     }}
                 />
             </Container>

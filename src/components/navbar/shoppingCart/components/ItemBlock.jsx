@@ -1,15 +1,15 @@
 import styled from 'styled-components/macro';
 import seafoodImg from '@/assets/mockimages/image6.png';
 import AddSub from './AddSub';
-import { merchantContext } from './MerchantBlock';
-import { useContext } from 'react';
+// import { merchantContext } from './MerchantBlock';
+// import { useContext } from 'react';
 
 const Wrapper = styled.div``;
 const Container = styled.div`
     width: 100%;
     height: 92px;
     /* background-color: skyblue; */
-    border: 1px #EBEBEB solid;
+    border: 1px #ebebeb solid;
 
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@ const Container = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
-        .title{
+        .title {
             font-weight: 600;
             margin-bottom: 8px;
         }
@@ -44,15 +44,15 @@ const Container = styled.div`
             align-items: center;
             justify-content: space-between;
 
-            .price{
+            .price {
                 font-weight: 600;
             }
         }
     }
 `;
 
-const ItemBlock = ({ index }) => {
-    const { infoArr } = useContext(merchantContext);
+const ItemBlock = ({ iIndex, mIndex, title, price, amount }) => {
+    // const { infoArr } = useContext(merchantContext);
     return (
         <Wrapper>
             <Container>
@@ -60,11 +60,11 @@ const ItemBlock = ({ index }) => {
                     <img src={seafoodImg} alt="seafoodImg" />
                 </div>
                 <div className="info">
-                    <div className="title">{infoArr[index].name}</div>
+                    <div className="title">{title}</div>
                     <div className="price-amount">
-                        <div className="price">{infoArr[index].price}</div>
+                        <div className="price">{price}</div>
                         <div className="amount">
-                            <AddSub index={index} />
+                            <AddSub iIndex={iIndex} mIndex={mIndex} amount={amount} />
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,9 @@ import Drawer from '@/components/general/Drawer';
 import styled from 'styled-components/macro';
 import { ReactComponent as DiscountImg } from '@/assets/mockimages/Card.svg';
 import MerchantBlock from './components/MerchantBlock';
+import { shoppingCartArr } from '@/store/store';
+import { useRecoilValue } from 'recoil';
+// const [sc, setSC] = useRecoilState(shoppingCartArr);
 
 const Wrapper = styled.div``;
 const Container = styled.div`
@@ -11,15 +14,18 @@ const Container = styled.div`
         margin-right: 30px;
     }
 
-    > .discountimg{
+    > .discountimg {
         width: 100%;
-        svg{
+        svg {
             width: 100%;
         }
     }
 `;
 
 const ShoppingCart = ({ className, onClose, visible, children }) => {
+    const sc = useRecoilValue(shoppingCartArr);
+    console.log(sc);
+
     return (
         <Wrapper className={className}>
             <Container>
@@ -29,10 +35,9 @@ const ShoppingCart = ({ className, onClose, visible, children }) => {
                             <DiscountImg />
                         </div>
                         <div className="elementContainer">
-                            <MerchantBlock />
-                            <MerchantBlock />
-                            <MerchantBlock />
-                            <MerchantBlock />
+                            {sc.map((item, index) => {
+                                return <MerchantBlock merchant={item} key={index} mIndex={index} />;
+                            })}
                         </div>
                     </div>
                 </Drawer>
