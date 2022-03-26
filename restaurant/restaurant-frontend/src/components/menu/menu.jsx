@@ -1,197 +1,184 @@
-import React from "react";
-import CategoryEditor from "./categoryEditor";
-import { apiGet } from "../../scripts/callAPI.js";
-import APIDirectButton from "../apiDirectButton";
+import React, { useEffect } from "react";
 import DirectButton from "../directButton";
+import axios from "axios";
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteButton from "../deleteButton";
+import StatusMessage from "../statusMessage";
 
-/*
-const menu = {
-  description: "This is the menu for this restaurant",
-  categories: [
-    {
-      name: "Burgers",
-      items: [
-        {
-          name: "McSingle",
-          description: "description",
-          price: 5.0,
+export default function Menu(props) {
+  const [items, setItems] = React.useState([]);
+  const [statusMessage, setStatusMessage] = React.useState(null);
+  let key = 0;
+
+  const getData = () => {
+    axios
+      .get("/menu", {
+        params: {
+          id: props.merchant_id,
         },
-        {
-          name: "McDouble",
-          description: "description",
-          price: 6.25,
-        },
-        {
-          name: "McTriple",
-          description: "description",
-          price: 7.5,
-        },
-      ],
-    },
-    {
-      name: "Sides",
-      items: [
-        {
-          name: "French Fries",
-          description: "description",
-          price: 3.0,
-        },
-        {
-          name: "Salad",
-          description: "description",
-          price: 3.5,
-        },
-      ],
-    },
-    {
-      name: "Drinks",
-      items: [
-        {
-          name: "Coca-Cola",
-          description: "description",
-          price: 2.0,
-        },
-        {
-          name: "Root Beer",
-          description: "description",
-          price: 2.0,
-        },
-        {
-          name: "Sprite",
-          description: "description",
-          price: 2.0,
-        },
-      ],
-    },
-  ],
-};
-*/
+      })
+      .then((res) => {
+        setItems(res.data);
+      });
+  };
 
-const menu = {
-  description: "This is the menu for this restaurant",
-  categories: []
-};
+  useEffect(() => {
+    getData();
+  }, []);
 
-class Menu extends React.Component {
-  constructor(props) {
-    super(props);
+  const getKey = () => {
+    key++;
+    return key;
+  };
 
-    this.state = {
-      selectedCategory: "Burgers",
-      selectedIndex: 0,
-      save: false,
-      description: "This is the menu for this restaurant",
-      categories: [{
-        name: "Burgers",
-        items: [
-          {
-            name: "McSingle",
-            description: "description",
-            price: 5.0,
-          },
-          {
-            name: "McDouble",
-            description: "description",
-            price: 6.25,
-          },
-          {
-            name: "McTriple",
-            description: "description",
-            price: 7.5,
-          },
-        ],
-      },],
-    };
+  const handleNameChange = (e, i) => {
+    let newItems = [...items];
+    newItems[i].name = e.target.value;
+    setItems(newItems);
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.categoryEditorChange = this.categoryEditorChange.bind(this);
-    //this.componentDidMount = this.componentDidMount(this);
-  }
+  const handleDescriptionChange = (e, i) => {
+    let newItems = [...items];
+    newItems[i].description = e.target.value;
+    setItems(newItems);
+  };
 
-  componentDidMount() {
-    this.getData();
-  }
+  const handlePriceChange = (e, i) => {
+    let newItems = [...items];
+    newItems[i].price = e.target.value;
+    setItems(newItems);
+  };
 
-  getData() {
-    var s = this.state;
-    var t = this;
+  const handleItemDelete = (i) => {
+    const newItems = [...items];
+    newItems.splice(i, 1);
+    setItems(newItems);
+  };
 
-    apiGet('/menu', this.state).then(function (r) {
-      //console.log("yo");
-      if (r != 'invalid') {
-        //menu.categories=r;
-        //var v = r;
-        var c = new Array();
+  const addItem = () => {
+    const newItems = [...items];
+    newItems.push({
+      description: "",
+      id: null,
+      image: null,
+      merchant_id: props.merchant_id,
+      name: "",
+      percent_off: 0,
+      price: 0,
+    });
+    setItems(newItems);
+  };
 
-        r.forEach((row) => {
-          var f;
-          if (c.length != 0) {
-            if ((f = c.findIndex(ro => ro.name == row.category)) == 0) {
-              c[f].items.push(row);
-            }
-            else
-            {
-              c.push({ name: row.category, items: [row] });
-              //console.log(f);
-            }
-          }
-          else {
-            c.push({ name: row.category, items: [row] });
-          }
+  const closeStatus = () => {
+    console.log("Why");
+    setStatusMessage(null);
+  };
+
+  const checkUniqueness = () => {
+    let names = [];
+    for (let i = 0; i < items.length; i++) {
+      for (let j = 0; j < names.length; j++) {
+        if (items[i].name === names[j]) {
+          return false;
+        }
+      }
+      names.push(items[i].name);
+    }
+    return true;
+  };
+
+  const saveChanges = () => {
+    let unique = checkUniqueness();
+    if (unique) {
+      axios
+        .post("/menu", {
+          id: props.merchant_id,
+          menu: items,
         })
-
-        /*
-        var c = [{
-          name: "Burgers",
-          items: v,
-        }]
-  */
-        s.categories = c;
-        t.setState({ categories: c });
-      }
-      else {
-        console.log("invalid");
-      }
-    })
-  }
-
-  handleChange(e, i) {
-    console.log("Category selected!");
-    this.setState({ selectedCategory: e.target.value });
-    this.setState({ selectedIndex: i });
-    //this.categoryEditorChange();
-  }
-
-  categoryEditorChange(ob) {
-    var v = this.state.categories.find((obj) => obj.name == this.state.selectedCategory);
-    ob.state.category = v;
-  }
-
-  render() {
-    var i = 0;
-
-    return (
-      <div>
-        <h1>Edit the menu</h1>
-        <select value={this.state.selectedCategory} onChange={(e) => this.handleChange(e)}>
-
-          {this.state.categories.map((obj, i) => (
-            <option value={obj.name} key={i} readOnly>{obj.name}</option>
-          ))}
-
-        </select>
-
-        <CategoryEditor
-          category={this.state.categories.find(
-            (obj) => obj.name == this.state.selectedCategory
-          )} id="items"
-          func={this.categoryEditorChange}
+        .then((res) => {
+          if (res.data.success) {
+            setStatusMessage(
+              <StatusMessage
+                error={false}
+                text="Successfully updated menu!"
+                handleClose={closeStatus}
+              />
+            );
+          } else {
+            setStatusMessage(
+              <StatusMessage
+                error={true}
+                text="Unknown error"
+                handleClose={closeStatus}
+              />
+            );
+          }
+          getData();
+        });
+    } else {
+      setStatusMessage(
+        <StatusMessage
+          error={true}
+          text="Error: Please make sure that each item name is unique."
+          handleClose={closeStatus}
         />
-        <APIDirectButton text="Save changes" route="/menu" state={this.state} func={this.handleText1Change}/>
-        <DirectButton route='/' text='Cancel' />
-      </div>
-    );
-  }
-}
+      );
+    }
+  };
 
-export default Menu;
+  return (
+    <div>
+      <h1>Edit the menu</h1>
+      <Button variant="outlined" startIcon={<AddIcon />} onClick={addItem}>
+        Add new item
+      </Button>
+      <table>
+        <thead>
+          <tr>
+            <th>Product name</th>
+            <th>Product description</th>
+            <th>Product price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item, i) => {
+            return (
+              <tr key={getKey()}>
+                <td>
+                  <input
+                    value={item.name}
+                    onChange={(e) => handleNameChange(e, i)}
+                  />
+                </td>
+                <td>
+                  <input
+                    value={item.description}
+                    onChange={(e) => handleDescriptionChange(e, i)}
+                  />
+                </td>
+                <td>
+                  <input
+                    value={item.price}
+                    onChange={(e) => handlePriceChange(e, i)}
+                  />
+                </td>
+                <td>
+                  <DeleteButton
+                    dialogText={"Are you sure you wish to delete this item?"}
+                    delete={() => handleItemDelete(i)}
+                  />
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <Button variant="outlined" onClick={saveChanges}>
+        Save changes
+      </Button>
+      <DirectButton route="/" text="Cancel" />
+      <div>{statusMessage}</div>
+    </div>
+  );
+}

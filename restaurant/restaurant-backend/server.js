@@ -75,7 +75,7 @@ restaurant ID from query params (id)
 output:
 [
   {
-    id: number,
+    id: (number, null),
     merchant_id: number,
     name: string,
     price: number,
@@ -144,12 +144,22 @@ app.post("/menu", (req, res) => {
     });
   }
   if (!failure) {
-    sql =
-      "INSERT INTO t_product (id,merchant_id,name,price,percent_off,description,image) VALUES (?,?,?,?,?,?,?)";
     menu.forEach((item) => {
-      connection.query(
-        sql,
-        [
+      let sql = "";
+      let inputs = "";
+      if(item.id === null) {
+        sql = "INSERT INTO t_product (merchant_id,name,price,percent_off,description,image) VALUES (?,?,?,?,?,?)";
+        inputs = [
+          item.merchant_id,
+          item.name,
+          item.price,
+          item.percent_off,
+          item.description,
+          item.image,
+        ]
+      } else {
+        sql = "INSERT INTO t_product (id,merchant_id,name,price,percent_off,description,image) VALUES (?,?,?,?,?,?,?)";
+        inputs = [
           item.id,
           item.merchant_id,
           item.name,
@@ -157,7 +167,11 @@ app.post("/menu", (req, res) => {
           item.percent_off,
           item.description,
           item.image,
-        ],
+        ]
+      }
+      connection.query(
+        sql,
+        inputs,
         (err) => {
           if (err) {
             console.log(err);
