@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
-    "sqlite3": "^5.0.2"
+    "mysql2": "^2.3.3"
   }
 }

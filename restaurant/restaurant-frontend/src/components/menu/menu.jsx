@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryEditor from "./categoryEditor";
-import { callAPI } from "../../scripts/callAPI.js";
+import { apiGet } from "../../scripts/callAPI.js";
 import APIDirectButton from "../apiDirectButton";
 import DirectButton from "../directButton";
 
@@ -116,7 +116,7 @@ class Menu extends React.Component {
     var s = this.state;
     var t = this;
 
-    callAPI('/menu', this.state).then(function (r) {
+    apiGet('/menu', this.state).then(function (r) {
       //console.log("yo");
       if (r != 'invalid') {
         //menu.categories=r;

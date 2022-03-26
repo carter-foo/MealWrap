@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { callAPI } from "../scripts/callAPI.js";
+import { apiGet } from "../scripts/callAPI.js";
 import Button from "@material-ui/core/Button";
 
 export default function APIDirectButton(props) {
@@ -30,7 +30,7 @@ export default function APIDirectButton(props) {
         else {
           state = props.state;
         }
-        callAPI(props.route, state).then(function (r) {
+        apiGet(props.route, state).then(function (r) {
           if (r != 'invalid') {
             routeChange(r);
 

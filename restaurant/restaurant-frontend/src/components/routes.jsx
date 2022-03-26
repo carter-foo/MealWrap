@@ -9,7 +9,7 @@ export default function Routing() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="/home" element={<Page exactPage={<Homepage />} />} />
+      <Route path="/:id/home" element={<Page exactPage={<Homepage />} />} />
       <Route path="/menu" element={<Page exactPage={<Menu />} />} />
       <Route path="/promotions" element={<Page exactPage={<Promotions />} />} />
     </Routes>
