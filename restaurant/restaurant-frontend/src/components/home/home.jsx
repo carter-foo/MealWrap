@@ -1,12 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import APIDirectButton from "../apiDirectButton";
+import DirectButton from "../directButton";
 
 export default function Homepage() {
-  let navigate = useNavigate();
-  const routeChange = (route) => {
-    navigate(route);
-  };
-
   return (
     <div>
       <h1>Welcome to the MealWrap Restaurant Editor</h1>
@@ -26,9 +21,9 @@ export default function Homepage() {
         using the updated menu and promotions.
       </p>
       <span>
-        <APIDirectButton text="Edit Restaurant Menu" route="/menu" />
+        <DirectButton text="Edit Restaurant Menu" route="/menu" />
         <br />
-        <APIDirectButton text="Edit Promotions" route="/promotions" />
+        <DirectButton text="Edit Promotions" route="/promotions" />
       </span>
     </div>
   );

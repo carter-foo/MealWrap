@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios'
-import { useNavigate } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
-class LoginClass extends React.Component {
+export default class LoginClass extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,7 +40,7 @@ class LoginClass extends React.Component {
       if(res.data.id === null) {
         this.setState({text1: "Invalid"})
       } else {
-        this.props.navigate(`/${res.data.id}/home`);
+        this.props.authenticate(res.data.id);
       }
     })
   }
@@ -79,11 +78,4 @@ class LoginClass extends React.Component {
       </div>
     );
   }
-}
-
-//wrapper functional component for login class (to make it possible to use the useNavigate hook)
-export default function Login (props) {
-  const navigate = useNavigate();
-
-  return <LoginClass {...props} navigate={navigate} />
 }

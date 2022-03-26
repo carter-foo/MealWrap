@@ -81,7 +81,7 @@ export default function Promotions() {
           </tbody>
         </table>
         <Button variant="outlined">Save changes</Button>
-        <DirectButton route="/home" text="Cancel" />
+        <DirectButton route="/" text="Cancel" />
       </div>
     </div>
   );

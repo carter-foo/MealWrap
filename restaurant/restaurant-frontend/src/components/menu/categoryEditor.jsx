@@ -54,46 +54,47 @@ class CategoryEditor extends React.Component {
     this.props.func(this);
 
     return (
-      <div>
-        <h3>{this.state.category.name}</h3>
-        <table className="menu-editor">
-          <tbody>
-            <tr>
-              <th>Item</th>
-              <th>Description</th>
-              <th>Price</th>
-            </tr>
-            {this.state.category.items.map((item, i) => {
-              return (
-                <tr key={i}>
-                  <td>
-                    <input
-                      className="menu-field"
-                      type="input"
-                      value={item.name}
-                      onChange={(e) => this.handleItemNameChange(e, i)}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      className="menu-field"
-                      value={item.description}
-                      onChange={(e) => this.handleDescriptionChange(e, i)}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      className="menu-field"
-                      value={item.price}
-                      onChange={(e) => this.handlePriceChange(e, i)}
-                    />
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+      <div />
+      // <div>
+      //   <h3>{this.state.category.name}</h3>
+      //   <table className="menu-editor">
+      //     <tbody>
+      //       <tr>
+      //         <th>Item</th>
+      //         <th>Description</th>
+      //         <th>Price</th>
+      //       </tr>
+      //       {this.state.category.items.map((item, i) => {
+      //         return (
+      //           <tr key={i}>
+      //             <td>
+      //               <input
+      //                 className="menu-field"
+      //                 type="input"
+      //                 value={item.name}
+      //                 onChange={(e) => this.handleItemNameChange(e, i)}
+      //               />
+      //             </td>
+      //             <td>
+      //               <input
+      //                 className="menu-field"
+      //                 value={item.description}
+      //                 onChange={(e) => this.handleDescriptionChange(e, i)}
+      //               />
+      //             </td>
+      //             <td>
+      //               <input
+      //                 className="menu-field"
+      //                 value={item.price}
+      //                 onChange={(e) => this.handlePriceChange(e, i)}
+      //               />
+      //             </td>
+      //           </tr>
+      //         );
+      //       })}
+      //     </tbody>
+      //   </table>
+      // </div>
     );
   }
 }
