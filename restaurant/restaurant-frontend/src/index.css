@@ -23,17 +23,17 @@ code {
 
 .page {
   background-color: rgb(255, 255, 255);
-  height:100vh;
-  position:absolute;
+  height: 100vh;
+  position: absolute;
   left: 25%;
   width: 50%;
   min-height: 100vh;
-  overflow-y:scroll;
+  overflow-y: scroll;
   -ms-overflow-style: none;
-  scrollbar-width:none;
+  scrollbar-width: none;
 }
 .pageborder {
-  padding:2%
+  padding: 2%;
 }
 
 .login-box {
@@ -51,14 +51,15 @@ code {
 
 .login-content {
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .navbar {
   padding: 2%;
-  background-color: #F43F5E;
-  color: #FFFFFF;
+  background-color: #f43f5e;
+  color: #ffffff;
   border: 5px solid #cc213d;
 }
 
@@ -79,18 +80,12 @@ code {
   /* width: 25vw; */
 }
 
-.promo-editor-description {
-  width: 100%;
-  height: 20vh;
-  resize: none;
-}
-
 .error-message {
   background: white;
   margin-top: 2%;
   font-size: 20px;
   border-radius: 5px;
-  border:5px solid rgb(255, 164, 164);
+  border: 5px solid rgb(255, 164, 164);
   padding: 2%;
 }
 
@@ -99,12 +94,12 @@ code {
   margin-top: 2%;
   font-size: 20px;
   border-radius: 5px;
-  border:5px solid rgb(142, 255, 148);
+  border: 5px solid rgb(142, 255, 148);
   padding: 2%;
 }
 
 .status-message-banner {
-  display:flex;
+  display: flex;
   justify-content: right;
 }
 
@@ -112,9 +107,31 @@ code {
   float: right;
 }
 
+.menu-item {
+  background: #eeeeee;
+  margin: 1%;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.menu-item-footer {
+  display: flex;
+  justify-content: right;
+}
+
+.menu-delete-button {
+  float: right;
+}
+
+.menu-description {
+  width: 99%;
+  height: 20vh;
+  resize: none;
+}
+
 input {
-  padding:5px;
-  margin:5px;
+  padding: 5px;
+  margin: 5px;
 }
 
 tr {

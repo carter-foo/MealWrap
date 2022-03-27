@@ -50,6 +50,12 @@ export default function Menu(props) {
     setItems(newItems);
   };
 
+  const handlePercentOffChange = (e, i) => {
+    let newItems = [...items];
+    newItems[i].percent_off = e.target.value;
+    setItems(newItems);
+  };
+
   const handleItemDelete = (i) => {
     const newItems = [...items];
     newItems.splice(i, 1);
@@ -133,47 +139,48 @@ export default function Menu(props) {
       <Button variant="outlined" startIcon={<AddIcon />} onClick={addItem}>
         Add new item
       </Button>
-      <table>
-        <thead>
-          <tr>
-            <th>Product name</th>
-            <th>Product description</th>
-            <th>Product price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((item, i) => {
-            return (
-              <tr key={getKey()}>
-                <td>
-                  <input
-                    value={item.name}
-                    onChange={(e) => handleNameChange(e, i)}
-                  />
-                </td>
-                <td>
-                  <input
-                    value={item.description}
-                    onChange={(e) => handleDescriptionChange(e, i)}
-                  />
-                </td>
-                <td>
-                  <input
-                    value={item.price}
-                    onChange={(e) => handlePriceChange(e, i)}
-                  />
-                </td>
-                <td>
-                  <DeleteButton
-                    dialogText={"Are you sure you wish to delete this item?"}
-                    delete={() => handleItemDelete(i)}
-                  />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      {items.map((item, i) => {
+        return (
+          <div className="menu-item" key={getKey()}>
+            <form>
+              <label>Name:</label>
+              <input
+                value={item.name}
+                onChange={(e) => handleNameChange(e, i)}
+              />
+              <br />
+              <label>Description:</label>
+              <br />
+              <textarea
+                className="menu-description"
+                value={item.description}
+                onChange={(e) => handleDescriptionChange(e, i)}
+              />
+              <br />
+              <label>Price:</label>
+              <input
+                value={item.price}
+                onChange={(e) => handlePriceChange(e, i)}
+              />
+              <br />
+              <label>Discount:</label>
+              <input
+                value={item.percent_off}
+                onChange={(e) => handlePercentOffChange(e, i)}
+              />
+              % off
+              <br />
+              <div className="menu-item-footer">
+                <DeleteButton
+                  className="menu-delete-button"
+                  dialogText={"Are you sure you wish to delete this item?"}
+                  delete={() => handleItemDelete(i)}
+                />
+              </div>
+            </form>
+          </div>
+        );
+      })}
       <Button variant="outlined" onClick={saveChanges}>
         Save changes
       </Button>

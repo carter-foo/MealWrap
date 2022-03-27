@@ -15,7 +15,6 @@ export default function NavBar(props) {
       <h1>MEALWRAP RESTAURANT EDITOR</h1>
       <DirectButton route="/" text="Home" />
       <DirectButton route="/menu" text="menu" />
-      <DirectButton route="/promotions" text="promotions" />
       <Button className="logout-button" variant="outlined" onClick={handleLogout} route="/" text="log out">Log out</Button>
     </div>
   );

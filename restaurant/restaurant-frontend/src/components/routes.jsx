@@ -4,7 +4,6 @@ import Login from "../pages/login";
 import Homepage from "./home/home";
 import React from 'react';
 import Menu from "./menu/menu";
-import Promotions from "./promotions/promotions";
 
 export default function Routing(props) {
   const [loginToken, setLoginToken] = React.useState(null);
@@ -18,7 +17,6 @@ export default function Routing(props) {
       <Routes>
         <Route path="/" element={<Page logout={logout} exactPage={<Homepage merchant_id={loginToken}/>} />} />
         <Route path="/menu" element={<Page logout={logout} exactPage={<Menu merchant_id={loginToken}/>} />} />
-        <Route path="/promotions" element={<Page logout={logout} exactPage={<Promotions merchant_id={loginToken}/>} />} />
       </Routes>
     );
   } else {

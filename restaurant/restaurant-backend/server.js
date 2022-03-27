@@ -183,66 +183,6 @@ app.post("/menu", (req, res) => {
 });
 
 /*
-Get all discounted items at a restaurant
-
-Input: merchant id from query params (id)
-
-Output: 
-[
-  {
-    id: number,
-    merchant_id: number,
-    name: string,
-    price: number,
-    percent_off: number,
-    description: string,
-    image: ???
-  }, ...
-]
-*/
-
-app.get("/promotions", (req, res) => {
-  let sql =
-    "SELECT * FROM t_product WHERE merchant_id = ? AND percent_off <> 0";
-  connection.query(sql, [req.query.id], (err, rows) => {
-    if (err) console.log(err);
-    else {
-      res.send(rows);
-    }
-  });
-});
-
-/*
-Update a product, setting its percent_off field to the supplied value
-
-Input:
-{
-  product_id: number,
-  percent_off: number
-}
-
-Output:
-{
-  success: boolean
-}
-*/
-
-app.put("/promotions", (req, res) => {
-  const id = req.body.product_id;
-  const percent_off = req.body.percent_off;
-  let failure = false;
-
-  let sql = "UPDATE t_product SET percent_off=? WHERE id=?";
-  connection.query(sql, [percent_off, id], (err) => {
-    if (err) {
-      console.log(err);
-      failure = true;
-    }
-  });
-  res.send({ success: !failure });
-});
-
-/*
 Adds a new restaurant to the database
 
 input: 
