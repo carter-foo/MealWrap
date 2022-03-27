@@ -24,10 +24,6 @@ const Container = styled.div`
             height: 100%;
             object-fit: cover;
 
-            /* position: absolute;
-            top: 0;
-            left: 0; */
-
             border-radius: 2px;
         }
     }

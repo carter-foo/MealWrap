@@ -5,6 +5,7 @@ import alertIcon from '@/assets/icons/alert.svg';
 import cartIcon from '@/assets/icons/cart.svg';
 import RoundIcon from '@/components/general/RoundIcon';
 import ShoppingCart from './shoppingCart/ShoppingCart';
+import { useNavigate } from 'react-router-dom';
 
 
 const Wrapper = styled.div`
@@ -54,6 +55,8 @@ const NBRight = () => {
         setVisible(false);
     };
 
+    const navigate = useNavigate();
+
     return (
         <Wrapper>
             {/* <img src={loginIcon} alt='login' /> */}
@@ -80,7 +83,7 @@ const NBRight = () => {
                 />
             </div>
 
-            <div className="loginBros">
+            <div className="loginBros" onClick={() => navigate("/login")}>
                 <Icon src={loginIcon} outerSize="44px" innerSize="25px" />
                 <div className="title">
                     <p>Log In</p>

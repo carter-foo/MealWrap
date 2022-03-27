@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 import MerchantInfo from './MerchantInfo';
 import TitlePic from './TitlePic';
+import exampleImg from '@/assets/mockimages/image2.jpg';
 
 
 const Wrapper = styled.div`
@@ -40,7 +41,7 @@ const MainContent = ({className}) => {
     return (
         <Wrapper className={className}>
             <Container>
-                <TitlePic />
+                <TitlePic imgSrc={exampleImg}/>
                 <MerchantInfo />
             </Container>
         </Wrapper>

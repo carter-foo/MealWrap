@@ -34,96 +34,96 @@ export const shoppingCartArr = atom({
                 },
             ],
         },
-        {
-            merchantName: 'Cactus Club Cafe',
-            items: [
-                {
-                    name: 'lalalaDddddd',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-            ],
-        },
-        {
-            merchantName: 'Cactus Club Cafe',
-            items: [
-                {
-                    name: 'lalalaDddddd',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-            ],
-        },
-        {
-            merchantName: 'Cactus Club Cafe',
-            items: [
-                {
-                    name: 'lalalaDddddd',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-                {
-                    name: 'lalala',
-                    price: '10.69',
-                    amount: 1,
-                },
-            ],
-        },
+        // {
+        //     merchantName: 'Cactus Club Cafe',
+        //     items: [
+        //         {
+        //             name: 'lalalaDddddd',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //     ],
+        // },
+        // {
+        //     merchantName: 'Cactus Club Cafe',
+        //     items: [
+        //         {
+        //             name: 'lalalaDddddd',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //     ],
+        // },
+        // {
+        //     merchantName: 'Cactus Club Cafe',
+        //     items: [
+        //         {
+        //             name: 'lalalaDddddd',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //         {
+        //             name: 'lalala',
+        //             price: '10.69',
+        //             amount: 1,
+        //         },
+        //     ],
+        // },
     ], // default value (aka initial value)
 });
 

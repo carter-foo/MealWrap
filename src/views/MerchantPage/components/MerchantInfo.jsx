@@ -19,7 +19,7 @@ const Container = styled.div`
         background-color: #fff;
 
         .title {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 600;
         }
 

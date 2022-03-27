@@ -12,7 +12,7 @@ const NavBarBase = styled.div`
     align-items: center;
     justify-content: space-between;
     position: sticky;
-    z-index: 5;
+    z-index: 20;
     background-color: #fff;
 `;
 

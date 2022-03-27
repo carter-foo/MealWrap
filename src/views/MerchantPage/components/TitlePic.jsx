@@ -8,9 +8,12 @@ const Container = styled.div`
     width: 100%;
     > .titleimg {
         width: 100%;
-        min-height: 200px;
+        height: 200px;
         background-color: red;
         img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 `;
