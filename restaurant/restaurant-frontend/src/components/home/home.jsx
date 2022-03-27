@@ -1,9 +1,32 @@
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import DirectButton from "../directButton";
+import axios from "axios";
 
-export default function Homepage() {
+export default function Homepage(props) {
+  const [name, setName] = React.useState("");
+  const [rating, setRating] = React.useState(null);
+
+  const getData = () => {
+    axios
+      .get("/home", {
+        params: {
+          id: props.merchant_id,
+        },
+      })
+      .then((res) => {
+        setName(res.data.name);
+        setRating(res.data.rating);
+      });
+  }
+  
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div>
+      <h1>Logged in as {name}</h1>
+      <p>Current restaurant rating: {rating}</p>
       <h1>Welcome to the MealWrap Restaurant Editor</h1>
       <h2>What is it?</h2>
       <p>

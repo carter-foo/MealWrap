@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import axios from 'axios'
+import axios from "axios";
 import Button from "@material-ui/core/Button";
+import StatusMessage from "../components/statusMessage";
+import RegisterUser from "../components/login/registerUser";
 
 export default class LoginClass extends React.Component {
   constructor(props) {
@@ -8,15 +10,15 @@ export default class LoginClass extends React.Component {
     this.state = {
       username: "",
       password: "",
-      text1: "",
       passwordShown: false,
       setPasswordShown: false,
+      statusMessage: null,
     };
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleText1Change = this.handleText1Change.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleStatusMessageClose = this.handleStatusMessageClose.bind(this);
   }
 
   handleUsernameChange(event) {
@@ -28,21 +30,31 @@ export default class LoginClass extends React.Component {
     this.setState({ passwordShown: false });
   }
 
-  handleText1Change(event) {
-    this.setState({ text1: event });
+  handleStatusMessageClose() {
+    this.setState({statusMessage: null})
   }
 
   handleSubmit() {
-    axios.post("/login", {
-      phone: this.state.username,
-      password: this.state.password,
-    }).then((res) => {
-      if(res.data.id === null) {
-        this.setState({text1: "Invalid"})
-      } else {
-        this.props.authenticate(res.data.id);
-      }
-    })
+    axios
+      .post("/login", {
+        phone: this.state.username,
+        password: this.state.password,
+      })
+      .then((res) => {
+        if (res.data.id === null) {
+          this.setState({
+            statusMessage: (
+              <StatusMessage
+                error={true}
+                text="Invalid credentials"
+                handleClose={this.handleStatusMessageClose}
+              />
+            ),
+          });
+        } else {
+          this.props.authenticate(res.data.id);
+        }
+      });
   }
 
   render() {
@@ -66,14 +78,11 @@ export default class LoginClass extends React.Component {
               onChange={this.handlePasswordChange}
             />
           </form>
-          <Button
-            variant="outlined"
-            onClick={this.handleSubmit}
-          >
+          <Button variant="outlined" onClick={this.handleSubmit}>
             Submit
           </Button>
-          {/* <APIDirectButton text="Submit" route="/home" state={this.state} func={this.handleText1Change}/> */}
-          <p>{this.state.text1}</p>
+          <RegisterUser />
+          <div>{this.state.statusMessage}</div>
         </div>
       </div>
     );

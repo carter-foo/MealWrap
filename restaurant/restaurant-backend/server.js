@@ -147,8 +147,9 @@ app.post("/menu", (req, res) => {
     menu.forEach((item) => {
       let sql = "";
       let inputs = "";
-      if(item.id === null) {
-        sql = "INSERT INTO t_product (merchant_id,name,price,percent_off,description,image) VALUES (?,?,?,?,?,?)";
+      if (item.id === null) {
+        sql =
+          "INSERT INTO t_product (merchant_id,name,price,percent_off,description,image) VALUES (?,?,?,?,?,?)";
         inputs = [
           item.merchant_id,
           item.name,
@@ -156,9 +157,10 @@ app.post("/menu", (req, res) => {
           item.percent_off,
           item.description,
           item.image,
-        ]
+        ];
       } else {
-        sql = "INSERT INTO t_product (id,merchant_id,name,price,percent_off,description,image) VALUES (?,?,?,?,?,?,?)";
+        sql =
+          "INSERT INTO t_product (id,merchant_id,name,price,percent_off,description,image) VALUES (?,?,?,?,?,?,?)";
         inputs = [
           item.id,
           item.merchant_id,
@@ -167,18 +169,14 @@ app.post("/menu", (req, res) => {
           item.percent_off,
           item.description,
           item.image,
-        ]
+        ];
       }
-      connection.query(
-        sql,
-        inputs,
-        (err) => {
-          if (err) {
-            console.log(err);
-            failure = true;
-          }
+      connection.query(sql, inputs, (err) => {
+        if (err) {
+          console.log(err);
+          failure = true;
         }
-      );
+      });
     });
   }
   res.send({ success: !failure });
@@ -243,6 +241,78 @@ app.put("/promotions", (req, res) => {
   });
   res.send({ success: !failure });
 });
+
+/*
+Adds a new restaurant to the database
+
+input: 
+{
+  phone: number,
+  password: string,
+  name: string,
+  description: string,
+  address: string
+}
+
+output:
+{
+  success: boolean
+}
+*/
+
+app.post("/register", (req, res) => {
+  const merchant = req.body;
+  let failure = false;
+
+  let sql =
+    "INSERT INTO t_merchant (phone,password,name,description,address) VALUES (?,?,?,?,?)";
+  connection.query(
+    sql,
+    [
+      merchant.phone,
+      merchant.password,
+      merchant.name,
+      merchant.description,
+      merchant.address,
+    ],
+    (err) => {
+      if (err) {
+        console.log(err);
+        failure = true;
+      }
+    }
+  );
+  res.send({ success: !failure });
+});
+
+/*
+Retrieves basic merchant information for the home menu
+
+input: Restaurant id from query params (id)
+
+output:
+{
+  name: string,
+  rating: number
+}
+*/
+
+app.get("/home", (req, res) => {
+  const merchant_id = req.query.id;
+
+  let sql = "SELECT name, rating FROM t_merchant WHERE id=?";
+
+  connection.query(sql, [merchant_id], (err, rows) => {
+    if(err) console.log(err);
+    else {
+      if(rows.length > 0) {
+        res.send(rows[0]);
+      } else {
+        res.send({});
+      }
+    }
+  })
+})
 
 // SQLite:
 // const bodyParser = require('body-parser');
