@@ -4,7 +4,6 @@ import { ReactComponent as DiscountImg } from '@/assets/mockimages/Card.svg';
 import MerchantBlock from './components/MerchantBlock';
 import { shoppingCartArr } from '@/store/store';
 import { useRecoilValue } from 'recoil';
-import { useEffect } from 'react';
 // const [sc, setSC] = useRecoilState(shoppingCartArr);
 
 const Wrapper = styled.div``;
