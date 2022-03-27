@@ -4,6 +4,7 @@ import { ReactComponent as DiscountImg } from '@/assets/mockimages/Card.svg';
 import MerchantBlock from './components/MerchantBlock';
 import { shoppingCartArr } from '@/store/store';
 import { useRecoilValue } from 'recoil';
+import { useEffect } from 'react';
 // const [sc, setSC] = useRecoilState(shoppingCartArr);
 
 const Wrapper = styled.div``;
@@ -24,7 +25,15 @@ const Container = styled.div`
 
 const ShoppingCart = ({ className, onClose, visible, children }) => {
     const sc = useRecoilValue(shoppingCartArr);
-    console.log(sc);
+
+    // useEffect(() => {
+    //   console.log("mounted");
+    
+    //   return () => {
+    //     console.log("unmounted");
+    //   }
+    // }, [sc])
+    
 
     return (
         <Wrapper className={className}>

@@ -29,25 +29,25 @@ const AddButton = styled.div`
 const AddSub = ({ iIndex, amount }) => {
     const { mIndex } = useContext(merchantContext);
 
-    const [scArr, setSCAmount] = useRecoilState(scItemAmountChanging);
+    const [scAmount, setSCAmount] = useRecoilState(
+        scItemAmountChanging({ iIndex, mIndex }),
+    );
 
     return (
         <Wrapper>
             <Container>
                 <SubButton
                     onClick={() => {
-                        const oriAmount = scArr[mIndex].items[iIndex].amount;
                         // console.log(mIndex);
-                        setSCAmount({ iIndex, mIndex, newAmount: oriAmount - 1 });
+                        setSCAmount(scAmount - 1);
                     }}
                 />
                 {/* {infoArr[index].amount} */}
                 <div className="amount">{amount}</div>
                 <AddButton
                     onClick={() => {
-                        const oriAmount = scArr[mIndex].items[iIndex].amount;
                         // console.log(mIndex);
-                        setSCAmount({ iIndex, mIndex, newAmount: oriAmount + 1 });
+                        setSCAmount(scAmount + 1);
                     }}
                 />
             </Container>

@@ -40,7 +40,7 @@ const MainContent = ({ className }) => {
             <Container>
                 <div className="title">All Categories</div>
                 <div className="content-container">
-                    <CategoryBox imgUrl={exampleImg} onClick={() => navigate('/merchants', { state: { tagName: 'Salad' } })}>
+                    <CategoryBox imgUrl={exampleImg} onClick={() => navigate('/merchantsbytag', { state: { tagName: 'Salad' } })}>
                         Salad
                     </CategoryBox>
                     <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>

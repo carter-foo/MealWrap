@@ -3,6 +3,7 @@ import Home from './Home/Home';
 import Checkout from './Checkout/Checkout';
 import Categories from './Categories/Categories';
 import MerchantsByCates from './MerchantsByCates/MerchantsByCates';
+import MerchantPage from './MerchantPage/MerchantPage';
 const routes = [
     {
         path: '/login',
@@ -21,9 +22,13 @@ const routes = [
         element: <Categories />,
     },
     {
-        path: '/merchants',
+        path: '/merchantsbytag',
         element: <MerchantsByCates />,
     },
+    {
+        path: '/merchants',
+        element: <MerchantPage />
+    }
 ];
 
 export default routes;
