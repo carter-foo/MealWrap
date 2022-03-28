@@ -1,11 +1,13 @@
 import styled from 'styled-components/macro';
 import { useState } from 'react';
-import loginIcon from '@/assets/icons/loginIcon.svg';
+// import loginIcon from '@/assets/icons/loginIcon.svg';
 import alertIcon from '@/assets/icons/alert.svg';
 import cartIcon from '@/assets/icons/cart.svg';
 import RoundIcon from '@/components/general/RoundIcon';
 import ShoppingCart from './shoppingCart/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { loginInfo } from '@/store/loginStore';
 
 const Wrapper = styled.div`
     display: flex;
@@ -14,11 +16,11 @@ const Wrapper = styled.div`
     flex-grow: 0;
 
     > .loginBros {
-        cursor: pointer;
         display: flex;
         align-items: center;
-
+        
         > .title {
+            cursor: pointer;
             margin-left: 10px;
         }
     }
@@ -47,6 +49,8 @@ const Icon = styled(RoundIcon)`
 
 const NBRight = () => {
     const [visible, setVisible] = useState(false);
+
+    const info = useRecoilValue(loginInfo);
 
     const onClose = () => {
         setVisible(false);
@@ -80,11 +84,18 @@ const NBRight = () => {
                 />
             </div>
 
-            <div className="loginBros" onClick={() => navigate('/login')}>
-                <Icon src={loginIcon} outerSize="44px" innerSize="25px" />
-                <div className="title">
-                    <p>Log In</p>
-                </div>
+            <div className="loginBros">
+                {/* <Icon src={loginIcon} outerSize="44px" innerSize="25px" /> */}
+                {console.log(!!info.phone)}
+                {!!info.phone ? (
+                    <div className="titleWelcome">
+                        <p>Welcome! {info.phone}</p>
+                    </div>
+                ) : (
+                    <div className="title" onClick={() => navigate('/login')}>
+                        <p>Log In</p>
+                    </div>
+                )}
             </div>
 
             <ShoppingCart onClose={onClose} visible={visible} className="shoppingCart" />

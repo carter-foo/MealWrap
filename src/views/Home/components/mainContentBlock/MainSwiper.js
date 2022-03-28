@@ -2,8 +2,9 @@ import styled from 'styled-components/macro';
 import React, { useRef } from 'react';
 import Swiper from 'react-tiga-swiper';
 import 'react-tiga-swiper/dist/index.css';
-import image1 from '@/assets/mockimages/image1.jpg';
-import image2 from '@/assets/mockimages/image2.jpg';
+import lodash from 'lodash'
+// import image1 from '@/assets/mockimages/image1.jpg';
+// import image2 from '@/assets/mockimages/image2.jpg';
 
 const StyledSwiperItemsWrap = styled.div`
     display: flex;
@@ -25,6 +26,10 @@ const StyledSwiperItemsWrap = styled.div`
 `;
 
 const toChunk = (ori, nPerArr) => {
+    if(!!!ori){
+        return [];
+    }
+    console.log(ori);
     const newSwiperData = [];
     for (var i = 0, len = ori.length; i < len; i += nPerArr) {
         newSwiperData.push(ori.slice(i, i + nPerArr));
@@ -41,14 +46,17 @@ const toChunk = (ori, nPerArr) => {
     return JSON.parse(JSON.stringify(newSwiperData));
 };
 
-const SwiperApp = () => {
+const SwiperApp = ({swiperData}) => {
     const swiperRef = useRef(null);
     // const [index, setIndex] = useState();
     // const swiperData = ['#99CCCC', '#FFCC99', '#FFCCCC', '#FFFFCC', '#CCFFFF', '#6723EE', '#444444'];
     // const imgUrl = URL.createObjectURL(image1);
-    const swiperData = [image1, image2, image1, image2, image1, image2];
-
-    const newData = toChunk(swiperData, 2);
+    // const swiperData = [image1, image2, image1, image2, image1, image2];
+    let dataArr = lodash.cloneDeep(swiperData);
+    console.log(dataArr);
+    // dataArr.length = 3;
+    const newData = toChunk(dataArr, 2);
+    // const newData = toChunk([1,2,3,4], 2);
 
     // const swipeTo = () => {
     //     const swiperInstance = swiperRef.current;
@@ -95,7 +103,7 @@ const SwiperApp = () => {
                                 <div
                                     key={key}
                                     style={{
-                                        backgroundImage: `url(${subItem})`,
+                                        backgroundImage: `url('/api/v1/product/image?id=${subItem}')`,
                                     }}
                                 ></div>
                             );

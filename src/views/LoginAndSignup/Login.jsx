@@ -2,6 +2,9 @@ import styled from 'styled-components/macro';
 import exampleImg from '@/assets/mockimages/image4.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
+import { useRecoilState } from 'recoil';
+import { loginInfo } from '@/store/loginStore';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -159,10 +162,29 @@ const Container = styled.div`
 
 const Login = () => {
     const bkg = exampleImg;
-
     const navigate = useNavigate();
-    const [phone, setPhone] = useState();
-    const [password, setPassword] = useState();
+
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [info, setInfo] = useRecoilState(loginInfo);
+
+    const loginRequest = async () => {
+        try {
+            const res = await axios.post('/api/v1/user/login', {
+                phone,
+                password,
+            });
+            console.log(res.data.data);
+            setInfo({ phone, token: res.data.data });
+            sessionStorage.setItem("userInfos",JSON.stringify({ phone, token: res.data.data }))
+            console.log("info: ", info);
+            navigate("/",{state:info});
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     return (
         <Wrapper>
             <Container bkg={bkg}>
@@ -200,7 +222,9 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="confirm-btn">Log In</div>
+                    <div className="confirm-btn" onClick={() => loginRequest()}>
+                        Log In
+                    </div>
                     <div className="signup-prompt">
                         <span className="prompt">Don't have an account? </span>
                         <span className="signup" onClick={() => navigate('/signup')}>
