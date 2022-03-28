@@ -45,7 +45,7 @@ ReactDOM.render(
             <GlobalStyle />
         </Fragment>
     </React.StrictMode>,
-    document.getElementById('root')
+    document.getElementById('root'),
 );
 
 /* Test components */

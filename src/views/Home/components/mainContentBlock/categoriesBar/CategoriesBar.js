@@ -38,7 +38,7 @@ const CateBar = () => {
                     selected={false}
                     iconSize="24px"
                     onClick={() => {
-                        console.log("lalala");
+                        console.log('lalala');
                         navigate('/Categories');
                     }}
                 />

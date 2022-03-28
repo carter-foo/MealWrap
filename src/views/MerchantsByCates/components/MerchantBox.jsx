@@ -49,7 +49,7 @@ const Container = styled.div`
             letter-spacing: -0.5px;
             color: #fff;
 
-            background-color: #F43F5E;
+            background-color: #f43f5e;
 
             display: inline-block;
             padding: 4px;

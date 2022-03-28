@@ -34,7 +34,7 @@ const Mask = props => {
 
     return createPortal(
         <MaskStyle onClick={clickFunc} display={display}></MaskStyle>,
-        node.current
+        node.current,
     );
 };
 

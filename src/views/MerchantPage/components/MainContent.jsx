@@ -1,8 +1,7 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components/macro';
 import MerchantInfo from './MerchantInfo';
 import TitlePic from './TitlePic';
 import exampleImg from '@/assets/mockimages/image2.jpg';
-
 
 const Wrapper = styled.div`
     margin: 0 auto;
@@ -36,16 +35,15 @@ const Container = styled.div`
     } */
 `;
 
-
-const MainContent = ({className}) => {
+const MainContent = ({ className }) => {
     return (
         <Wrapper className={className}>
             <Container>
-                <TitlePic imgSrc={exampleImg}/>
+                <TitlePic imgSrc={exampleImg} />
                 <MerchantInfo />
             </Container>
         </Wrapper>
-    )
-}
+    );
+};
 
 export default MainContent;

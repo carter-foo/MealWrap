@@ -1,14 +1,13 @@
 import styled from 'styled-components/macro';
 
-const Wrapper = styled.div`
-    
-`;
+const Wrapper = styled.div``;
 
 const Container = styled.div`
     width: 210px;
     height: 150px;
     background-color: blueviolet;
-    background: ${props => (props.imgUrl ? `url(${props.imgUrl}) no-repeat center center` : 'blueviolet')};
+    background: ${props =>
+        props.imgUrl ? `url(${props.imgUrl}) no-repeat center center` : 'blueviolet'};
     background-size: cover;
 
     cursor: pointer;
@@ -30,12 +29,12 @@ const Container = styled.div`
     }
 `;
 
-const CategoryBox = ({imgUrl, children,onClick }) => {
+const CategoryBox = ({ imgUrl, children, onClick }) => {
     // console.log(imgUrl);
     return (
         <Wrapper onClick={onClick}>
             <Container imgUrl={imgUrl}>
-                <div className="overlay" ></div>
+                <div className="overlay"></div>
                 <div className="title">{children}</div>
             </Container>
         </Wrapper>

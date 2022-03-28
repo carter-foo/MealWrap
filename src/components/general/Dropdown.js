@@ -32,11 +32,11 @@ const DropdownWrap = styled.div`
 const DropdownContent = styled.div`
     width: ${props => props.width};
     height: ${props => props.height};
-    overflow:hidden;
+    overflow: hidden;
 `;
 
 const CloseBtn = styled.div`
-    display: ${props => (props.display==='true' ? 'block' : 'none')};
+    display: ${props => (props.display === 'true' ? 'block' : 'none')};
     width: 15px;
     height: 15px;
     position: absolute;
@@ -99,9 +99,17 @@ const Dropdown = props => {
     return (
         <DropdownWrap zIndex={zIndex} className={props.className}>
             {!!visibleMask && (
-                <DropdownMask clickFunc={maskClosable ? handleClose : null} display={visible ? 'block' : 'none'} container={container}></DropdownMask>
+                <DropdownMask
+                    clickFunc={maskClosable ? handleClose : null}
+                    display={visible ? 'block' : 'none'}
+                    container={container}
+                ></DropdownMask>
             )}
-            <DropdownContent className="dd_content" width={visible ? width : '0px'} height={visible ? height : '0px'}>
+            <DropdownContent
+                className="dd_content"
+                width={visible ? width : '0px'}
+                height={visible ? height : '0px'}
+            >
                 {children}
                 {!!visibleCloseIcon && (
                     <CloseBtn onClick={handleClose} display={visible.toString()}>

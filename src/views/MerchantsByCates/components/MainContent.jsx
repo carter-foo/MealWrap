@@ -41,14 +41,46 @@ const MainContent = ({ className, tagName = 'lalala' }) => {
             <Container>
                 <div className="title">{tagTitle}</div>
                 <div className="content-container">
-                    <MerchantBox merchantName="Xixixi" starNum="9.9" imgUrl={exampleImg} />
-                    <MerchantBox merchantName="Xixixi" starNum="9.9" imgUrl={exampleImg} />
-                    <MerchantBox merchantName="Xixixi" starNum="9.9" imgUrl={exampleImg} />
-                    <MerchantBox merchantName="Xixixi" starNum="9.9" imgUrl={exampleImg} />
-                    <MerchantBox merchantName="Xixixi" starNum="9.9" imgUrl={exampleImg} />
-                    <MerchantBox merchantName="Xixixi" starNum="9.9" imgUrl={exampleImg} />
-                    <MerchantBox merchantName="Xixixi" starNum="9.9" imgUrl={exampleImg} />
-                    <MerchantBox merchantName="Xixixi" starNum="9.9" imgUrl={exampleImg} />
+                    <MerchantBox
+                        merchantName="Xixixi"
+                        starNum="9.9"
+                        imgUrl={exampleImg}
+                    />
+                    <MerchantBox
+                        merchantName="Xixixi"
+                        starNum="9.9"
+                        imgUrl={exampleImg}
+                    />
+                    <MerchantBox
+                        merchantName="Xixixi"
+                        starNum="9.9"
+                        imgUrl={exampleImg}
+                    />
+                    <MerchantBox
+                        merchantName="Xixixi"
+                        starNum="9.9"
+                        imgUrl={exampleImg}
+                    />
+                    <MerchantBox
+                        merchantName="Xixixi"
+                        starNum="9.9"
+                        imgUrl={exampleImg}
+                    />
+                    <MerchantBox
+                        merchantName="Xixixi"
+                        starNum="9.9"
+                        imgUrl={exampleImg}
+                    />
+                    <MerchantBox
+                        merchantName="Xixixi"
+                        starNum="9.9"
+                        imgUrl={exampleImg}
+                    />
+                    <MerchantBox
+                        merchantName="Xixixi"
+                        starNum="9.9"
+                        imgUrl={exampleImg}
+                    />
                 </div>
             </Container>
         </Wrapper>

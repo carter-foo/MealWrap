@@ -5,8 +5,7 @@ import TotalPrices from './TotalPrices';
 import AddPromo from './AddPromo';
 import PaymentMethod from './PaymentMethod';
 
-const Wrapper = styled.div`
-`;
+const Wrapper = styled.div``;
 const Container = styled.div`
     margin: 0 auto;
     max-width: 920px;

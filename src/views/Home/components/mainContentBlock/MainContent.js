@@ -14,9 +14,9 @@ const Wrapper = styled.div`
 const BreakBar = styled.div`
     width: 100%;
     height: 10px;
-    background-color: #C4C4C4;
+    background-color: #c4c4c4;
     margin-top: 15px;
-`
+`;
 
 const MainContent = props => {
     const { className } = props;

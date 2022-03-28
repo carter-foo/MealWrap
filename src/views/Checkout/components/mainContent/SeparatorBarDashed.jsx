@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledSeparatorBarDashed = styled.div`
     width: 100%;
@@ -6,10 +6,8 @@ const StyledSeparatorBarDashed = styled.div`
     background-color: #c4c4c4;
 `;
 
-const SeparatorBarDashed = ({className}) => {
-    return (
-        <StyledSeparatorBarDashed className={className} />
-    )
-}
+const SeparatorBarDashed = ({ className }) => {
+    return <StyledSeparatorBarDashed className={className} />;
+};
 
 export default SeparatorBarDashed;

@@ -4,7 +4,7 @@ import Swiper from 'react-tiga-swiper';
 import 'react-tiga-swiper/dist/index.css';
 import image3 from '@/assets/mockimages/image3.jpg';
 import image4 from '@/assets/mockimages/image4.jpg';
-import ShowBlock from './ShowBlock'
+import ShowBlock from './ShowBlock';
 
 const StyledSwiper = styled(Swiper)`
     .tiga-swiper-indicator {
@@ -58,7 +58,7 @@ const toChunk = (ori, nPerArr) => {
 
     if (theLastArr.length < nPerArr) {
         newSwiperData[newSwiperData.length - 1] = theLastArr.concat(
-            ori.slice(0, nPerArr - theLastArr.length)
+            ori.slice(0, nPerArr - theLastArr.length),
         );
     }
 
@@ -87,7 +87,7 @@ const SwiperApp = () => {
     return (
         <>
             <StyledSwiper
-                className='demo'
+                className="demo"
                 autoPlay={0}
                 touchable={true}
                 selectedIndex={0}
@@ -95,7 +95,7 @@ const SwiperApp = () => {
                 indicator={null}
                 showDots={false}
                 dots={null}
-                direction='horizontal'
+                direction="horizontal"
                 loop={true}
                 ref={swiperRef}
                 style={{}}

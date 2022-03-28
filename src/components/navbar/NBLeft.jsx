@@ -58,13 +58,13 @@ const NBLeft = () => {
     };
     return (
         <LogoAddressBlock>
-            <div className='logo'></div>
+            <div className="logo"></div>
             <AddressTitle onClick={() => setVisible(!visible)}>
-                <div className='titie'>Choose your location</div>
-                <img src={downIcon} alt='' />
+                <div className="titie">Choose your location</div>
+                <img src={downIcon} alt="" />
             </AddressTitle>
             <NewDropdown
-                width='300px'
+                width="300px"
                 height="300px"
                 visible={visible}
                 onClose={onClose}

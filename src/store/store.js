@@ -130,13 +130,20 @@ export const shoppingCartArr = atom({
 export const scItemAmountChanging = selectorFamily({
     key: 'scItemModifing',
     // scArr[mIndex].items[iIndex].amount;
-    get: ({iIndex,mIndex}) => ({ get }) => get(shoppingCartArr)[mIndex].items[iIndex].amount,
-    set: ({iIndex, mIndex}) => ({ get, set }, newAmount) => {
-        let newSC = lodash.cloneDeep(get(shoppingCartArr));
-        // console.log(iIndex,mIndex);
-        let items = newSC[mIndex].items;
-        newAmount === 0 ? items.splice(iIndex,1) : items[iIndex].amount = newAmount ;
-        items.length === 0 && newSC.splice(mIndex,1);
-        set(shoppingCartArr, newSC);
-    },
+    get:
+        ({ iIndex, mIndex }) =>
+        ({ get }) =>
+            get(shoppingCartArr)[mIndex].items[iIndex].amount,
+    set:
+        ({ iIndex, mIndex }) =>
+        ({ get, set }, newAmount) => {
+            let newSC = lodash.cloneDeep(get(shoppingCartArr));
+            // console.log(iIndex,mIndex);
+            let items = newSC[mIndex].items;
+            newAmount === 0
+                ? items.splice(iIndex, 1)
+                : (items[iIndex].amount = newAmount);
+            items.length === 0 && newSC.splice(mIndex, 1);
+            set(shoppingCartArr, newSC);
+        },
 });

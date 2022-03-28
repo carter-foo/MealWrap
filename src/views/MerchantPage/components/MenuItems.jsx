@@ -93,7 +93,7 @@ const Container = styled.div`
     }
 `;
 
-const MenuItems = ({ className, id , name="Dasani", price=1.99 }) => {
+const MenuItems = ({ className, id, name = 'Dasani', price = 1.99 }) => {
     return (
         <Wrapper className={className}>
             <Container>

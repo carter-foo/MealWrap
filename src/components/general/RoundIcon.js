@@ -25,9 +25,14 @@ const RoundDiv = styled.div`
 `;
 
 const RoundIcon = props => {
-    const { src=logo, outerSize, innerSize, className, onClickFunc } = props;
+    const { src = logo, outerSize, innerSize, className, onClickFunc } = props;
     return (
-        <RoundDiv outerSize={outerSize} innerSize={innerSize} className={className} onClick={onClickFunc}>
+        <RoundDiv
+            outerSize={outerSize}
+            innerSize={innerSize}
+            className={className}
+            onClick={onClickFunc}
+        >
             <img src={src} alt="logo" />
         </RoundDiv>
     );

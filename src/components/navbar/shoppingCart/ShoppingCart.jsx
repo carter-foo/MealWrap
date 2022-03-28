@@ -27,12 +27,11 @@ const ShoppingCart = ({ className, onClose, visible, children }) => {
 
     // useEffect(() => {
     //   console.log("mounted");
-    
+
     //   return () => {
     //     console.log("unmounted");
     //   }
     // }, [sc])
-    
 
     return (
         <Wrapper className={className}>
@@ -44,7 +43,13 @@ const ShoppingCart = ({ className, onClose, visible, children }) => {
                         </div>
                         <div className="elementContainer">
                             {sc.map((item, index) => {
-                                return <MerchantBlock merchant={item} key={index} mIndex={index} />;
+                                return (
+                                    <MerchantBlock
+                                        merchant={item}
+                                        key={index}
+                                        mIndex={index}
+                                    />
+                                );
                             })}
                         </div>
                     </div>

@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <Fragment>
             <NavBar></NavBar>
-            <MainContent/>
+            <MainContent />
         </Fragment>
     );
 };

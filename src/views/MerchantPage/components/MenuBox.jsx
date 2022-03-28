@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro';
 import MenuItems from './MenuItems';
 
-
 const Wrapper = styled.div`
     width: 100%;
 
@@ -11,7 +10,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
     width: 100%;
 
-/* > .content-container {
+    /* > .content-container {
         padding: 32px 0;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -29,7 +28,7 @@ const Container = styled.div`
         letter-spacing: 0;
     } */
 
-    > .title{
+    > .title {
         height: 24px;
         font-weight: 600;
         font-size: 23px;
@@ -37,7 +36,7 @@ const Container = styled.div`
         margin-bottom: 20px;
     }
 
-    > .items{
+    > .items {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
@@ -45,10 +44,9 @@ const Container = styled.div`
         row-gap: 12px;
         column-gap: 12px;
     }
-    
 `;
 
-const MenuBox = ({ className,title,items }) => {
+const MenuBox = ({ className, title, items }) => {
     return (
         <Wrapper className={className}>
             <Container>

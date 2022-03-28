@@ -36,7 +36,7 @@ const PriceBlock = styled.div`
 
 const StyledSeparatorBarDashed = styled(SeparatorBarDashed)`
     margin: 16px 0;
-`
+`;
 
 const TotalPrices = props => {
     return (

@@ -2,8 +2,8 @@ import styled from 'styled-components/macro';
 
 const Wrapper = styled.div``;
 const Container = styled.div`
-    > .addpromo_title{
-        font-weight:600;
+    > .addpromo_title {
+        font-weight: 600;
         font-size: 16px;
 
         margin-bottom: 16px;

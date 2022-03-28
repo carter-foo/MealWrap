@@ -1,8 +1,8 @@
-import styled from "styled-components/macro";
+import styled from 'styled-components/macro';
 
 const Wrapper = styled.div`
     position: relative;
-`
+`;
 
 const RateStarFrostedGlassWrapper = styled.div`
     display: flex;
@@ -35,7 +35,7 @@ const TextFrostedGlassWrapper = styled.div`
 `;
 
 const ShowBlocks = props => {
-    const {className, style} = props;
+    const { className, style } = props;
 
     return (
         <Wrapper className={className} style={style}>
@@ -43,6 +43,6 @@ const ShowBlocks = props => {
             <TextFrostedGlassWrapper />
         </Wrapper>
     );
-}
+};
 
 export default ShowBlocks;

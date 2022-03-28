@@ -7,7 +7,6 @@ import RoundIcon from '@/components/general/RoundIcon';
 import ShoppingCart from './shoppingCart/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
 
-
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
@@ -34,8 +33,6 @@ const Wrapper = styled.div`
             margin-right: 10px;
         }
     }
-
-    
 `;
 
 const Icon = styled(RoundIcon)`
@@ -83,7 +80,7 @@ const NBRight = () => {
                 />
             </div>
 
-            <div className="loginBros" onClick={() => navigate("/login")}>
+            <div className="loginBros" onClick={() => navigate('/login')}>
                 <Icon src={loginIcon} outerSize="44px" innerSize="25px" />
                 <div className="title">
                     <p>Log In</p>

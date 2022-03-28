@@ -5,8 +5,6 @@ import 'react-tiga-swiper/dist/index.css';
 import image1 from '@/assets/mockimages/image1.jpg';
 import image2 from '@/assets/mockimages/image2.jpg';
 
-
-
 const StyledSwiperItemsWrap = styled.div`
     display: flex;
     justify-content: center;
@@ -35,7 +33,9 @@ const toChunk = (ori, nPerArr) => {
     let theLastArr = newSwiperData[newSwiperData.length - 1];
 
     if (theLastArr.length < nPerArr) {
-        newSwiperData[newSwiperData.length - 1] = theLastArr.concat(ori.slice(0, nPerArr - theLastArr.length));
+        newSwiperData[newSwiperData.length - 1] = theLastArr.concat(
+            ori.slice(0, nPerArr - theLastArr.length),
+        );
     }
 
     return JSON.parse(JSON.stringify(newSwiperData));
@@ -46,14 +46,7 @@ const SwiperApp = () => {
     // const [index, setIndex] = useState();
     // const swiperData = ['#99CCCC', '#FFCC99', '#FFCCCC', '#FFFFCC', '#CCFFFF', '#6723EE', '#444444'];
     // const imgUrl = URL.createObjectURL(image1);
-    const swiperData = [
-        image1,
-        image2,
-        image1,
-        image2,
-        image1,
-        image2,
-    ];
+    const swiperData = [image1, image2, image1, image2, image1, image2];
 
     const newData = toChunk(swiperData, 2);
 
@@ -81,13 +74,13 @@ const SwiperApp = () => {
         // <StyledSwiperWrap>
         <>
             <Swiper
-                className='demo'
+                className="demo"
                 autoPlay={3000}
                 selectedIndex={0}
                 showIndicators={true}
                 indicator={null}
                 dots={null}
-                direction='horizontal'
+                direction="horizontal"
                 loop={true}
                 ref={swiperRef}
                 // onChange={onChange}
@@ -116,4 +109,4 @@ const SwiperApp = () => {
 };
 
 export default SwiperApp;
-export {toChunk};
+export { toChunk };

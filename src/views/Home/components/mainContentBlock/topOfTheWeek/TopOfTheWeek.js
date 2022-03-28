@@ -6,22 +6,24 @@ const Wrapper = styled.div`
     /* padding: 0 20px; */
     margin-top: 20px;
 
-    > .title{
+    > .title {
         font-size: 20px;
         font-weight: 800;
 
         margin-bottom: 16px;
     }
-`
+`;
 
 const TopOfTheWeek = props => {
     const { className } = props;
-    return <>
-        <Wrapper className={className}>
-            <div className="title">Top of the week</div>
-            <HdSwiper/>
-        </Wrapper>
-    </>
-}
+    return (
+        <>
+            <Wrapper className={className}>
+                <div className="title">Top of the week</div>
+                <HdSwiper />
+            </Wrapper>
+        </>
+    );
+};
 
 export default TopOfTheWeek;

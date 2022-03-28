@@ -77,7 +77,10 @@ const DrawerContent = props => {
 
     return (
         <DrawerContentWrap zIndex={zIndex} className={className}>
-            <DrawerContentContainer width={!!width ? width : 'unset'} height={!!height ? height : 'unset'}>
+            <DrawerContentContainer
+                width={!!width ? width : 'unset'}
+                height={!!height ? height : 'unset'}
+            >
                 {children}
                 {/* {!!visibleCloseIcon && (
                     <CloseBtn onClick={handleClose}>
@@ -90,7 +93,7 @@ const DrawerContent = props => {
 };
 
 const DrawerWrapper = styled.div`
-    display: ${props => props.visible ? 'block' : 'none'};
+    display: ${props => (props.visible ? 'block' : 'none')};
     position: fixed;
     top: 0;
     left: 0;
@@ -140,9 +143,7 @@ const Drawer = props => {
     return (
         <DrawerWrapper visible={visible} className={className}>
             <MaskStyle onClick={handleClose}></MaskStyle>
-            <DrawerContent>
-                {children}
-            </DrawerContent>
+            <DrawerContent>{children}</DrawerContent>
         </DrawerWrapper>
     );
 };

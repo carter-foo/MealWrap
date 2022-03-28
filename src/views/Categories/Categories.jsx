@@ -19,6 +19,6 @@ const Categories = props => {
             </Container>
         </Wrapper>
     );
-}
+};
 
 export default Categories;

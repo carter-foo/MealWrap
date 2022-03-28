@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro';
-import Left from './NBLeft'
-import Right from './NBRight'
-
+import Left from './NBLeft';
+import Right from './NBRight';
 
 const NavBarBase = styled.div`
     height: 90px;

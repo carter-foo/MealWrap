@@ -28,16 +28,16 @@ const routes = [
     },
     {
         path: '/merchants',
-        element: <MerchantPage />
+        element: <MerchantPage />,
     },
     {
         path: '/login',
-        element: <Login />
+        element: <Login />,
     },
     {
         path: '/signup',
-        element: <Signup />
-    }
+        element: <Signup />,
+    },
 ];
 
 export default routes;

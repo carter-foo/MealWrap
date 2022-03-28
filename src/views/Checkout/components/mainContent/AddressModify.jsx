@@ -40,7 +40,9 @@ const AddressModify = props => {
                     </div>
                     <div className="address_content">
                         <p className="addressee">Office</p>
-                        <p className="addresses">Adi Sucipto St. No. 23, Solo, Central Java, Indonesia</p>
+                        <p className="addresses">
+                            Adi Sucipto St. No. 23, Solo, Central Java, Indonesia
+                        </p>
                     </div>
                 </div>
             </Container>

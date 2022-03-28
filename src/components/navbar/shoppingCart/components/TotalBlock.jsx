@@ -50,7 +50,9 @@ const TotalBlock = ({ merchantName }) => {
                     <div className="prompt">Order Total</div>
                     <div className="title">$38.48</div>
                 </div>
-                <div className="checkoutBtn" onClick={() => navigate('/checkout')}>Go To Checkout</div>
+                <div className="checkoutBtn" onClick={() => navigate('/checkout')}>
+                    Go To Checkout
+                </div>
             </Container>
         </Wrapper>
     );

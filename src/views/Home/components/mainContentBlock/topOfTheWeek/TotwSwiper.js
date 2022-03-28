@@ -4,8 +4,8 @@ import Swiper from 'react-tiga-swiper';
 import 'react-tiga-swiper/dist/index.css';
 import ShowBlock from './ShowBlock';
 import image5 from '@/assets/mockimages/image5.png';
-import image6 from '@/assets/mockimages/image6.png'
-import image7 from '@/assets/mockimages/image7.png'
+import image6 from '@/assets/mockimages/image6.png';
+import image7 from '@/assets/mockimages/image7.png';
 
 const StyledSwiperItemsWrap = styled.div`
     display: flex;
@@ -46,7 +46,7 @@ const toChunk = (ori, nPerArr) => {
 
     if (theLastArr.length < nPerArr) {
         newSwiperData[newSwiperData.length - 1] = theLastArr.concat(
-            ori.slice(0, nPerArr - theLastArr.length)
+            ori.slice(0, nPerArr - theLastArr.length),
         );
     }
 
@@ -62,47 +62,47 @@ const SwiperApp = () => {
         {
             url: image5,
             title: 'Rice Noodle with Egg',
-            price: '10.77'
+            price: '10.77',
         },
         {
             url: image6,
             title: 'Special Salad',
-            price: '10.77'
+            price: '10.77',
         },
         {
             url: image7,
             title: 'Delicious Soup',
-            price: '10.77'
+            price: '10.77',
         },
         {
             url: image5,
             title: 'Rice Noodle with Egg',
-            price: '10.77'
+            price: '10.77',
         },
         {
             url: image6,
             title: 'Special Salad',
-            price: '10.77'
+            price: '10.77',
         },
         {
             url: image7,
             title: 'Delicious Soup',
-            price: '10.77'
+            price: '10.77',
         },
         {
             url: image5,
             title: 'Rice Noodle with Egg',
-            price: '10.77'
+            price: '10.77',
         },
         {
             url: image6,
             title: 'Special Salad',
-            price: '10.77'
+            price: '10.77',
         },
         {
             url: image7,
             title: 'Delicious Soup',
-            price: '10.77'
+            price: '10.77',
         },
     ];
 
@@ -134,7 +134,7 @@ const SwiperApp = () => {
         // <StyledSwiperWrap>
         <>
             <Swiper
-                className='demo'
+                className="demo"
                 autoPlay={0}
                 touchable={true}
                 selectedIndex={0}
@@ -142,7 +142,7 @@ const SwiperApp = () => {
                 indicator={null}
                 showDots={false}
                 dots={null}
-                direction='horizontal'
+                direction="horizontal"
                 loop={true}
                 ref={swiperRef}
                 // onChange={onChange}

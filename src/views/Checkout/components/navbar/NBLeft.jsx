@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import { ReactComponent as LeftIcon } from '@/assets/icons/left.svg';
 
 const Wrapper = styled.div`

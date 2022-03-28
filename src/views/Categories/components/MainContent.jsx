@@ -19,7 +19,7 @@ const Container = styled.div`
         line-height: 32px;
         letter-spacing: 0;
 
-        padding-left: 10px
+        padding-left: 10px;
     }
 
     > .content-container {
@@ -40,7 +40,12 @@ const MainContent = ({ className }) => {
             <Container>
                 <div className="title">All Categories</div>
                 <div className="content-container">
-                    <CategoryBox imgUrl={exampleImg} onClick={() => navigate('/merchantsbytag', { state: { tagName: 'Salad' } })}>
+                    <CategoryBox
+                        imgUrl={exampleImg}
+                        onClick={() =>
+                            navigate('/merchantsbytag', { state: { tagName: 'Salad' } })
+                        }
+                    >
                         Salad
                     </CategoryBox>
                     <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>

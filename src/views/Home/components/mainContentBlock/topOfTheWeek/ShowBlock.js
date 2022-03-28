@@ -34,7 +34,6 @@ const FlexShowBox = styled.div`
         }
     }
 
-
     .title {
         font-size: 16px;
         font-weight: 600;
@@ -62,15 +61,15 @@ const ShowBlocks = props => {
     return (
         <Wrapper className={className} style={style}>
             <FlexShowBox>
-                <div className='image'>
-                    <img src={imageSrc || image6} alt='' />
+                <div className="image">
+                    <img src={imageSrc || image6} alt="" />
                 </div>
-                <div className='title-price'>
-                    <div className='title'>{title || 'Salad'}</div>
-                    <div className='price'>{price || '$10.77'}</div>
+                <div className="title-price">
+                    <div className="title">{title || 'Salad'}</div>
+                    <div className="price">{price || '$10.77'}</div>
                 </div>
-                <div id='totwLike' className='totwLike'>
-                    <img src={likeIcon} alt='' />
+                <div id="totwLike" className="totwLike">
+                    <img src={likeIcon} alt="" />
                 </div>
             </FlexShowBox>
         </Wrapper>
