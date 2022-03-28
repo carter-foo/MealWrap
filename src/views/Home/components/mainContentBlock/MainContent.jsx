@@ -32,6 +32,7 @@ const MainContent = props => {
             setProductdata(() => res.data.data);
           } catch (err) {
               console.error(err);
+              setProductdata(() => {})
           }
       }
       request()
@@ -44,7 +45,7 @@ const MainContent = props => {
             <SwiperApp className={className} swiperData={productdata}/>
             <CateBar />
             <BreakBar />
-            <HotDeals />
+            <HotDeals swiperData={productdata}/>
             <TopOfTheWeek />
         </Wrapper>
     );

@@ -12,7 +12,7 @@ const MerchantsByCates = ({ className }) => {
         <Wrapper className={className}>
             <Container>
                 <NavBar />
-                <MainContent tagName={!!state ? state.tagName : void 0} />
+                <MainContent tagName={!!state ? state.tagName : void(0)} />
             </Container>
         </Wrapper>
     );

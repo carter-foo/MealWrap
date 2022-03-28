@@ -1,6 +1,9 @@
 import styled from 'styled-components/macro';
 import MerchantBox from './MerchantBox';
 import exampleImg from '@/assets/mockimages/image4.jpg';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
     margin: 0 auto;
@@ -34,14 +37,50 @@ const Container = styled.div`
     }
 `;
 
-const MainContent = ({ className, tagName = 'lalala' }) => {
-    const tagTitle = `Restaurant with tag '${tagName}'`;
+const MainContent = ({ className, tagName = 'Offers' }) => {
+    const [merchants, setMerchants] = useState([]);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!!tagName) {
+            const request = async () => {
+                try {
+                    const res = await axios('/api/v1/merchanttag/tagname', {
+                        params: {
+                            tagName,
+                        },
+                    });
+                    console.log(res.data.data);
+                    setMerchants(res.data.data);
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+
+            request();
+        } else {
+            setMerchants([]);
+        }
+    }, [tagName]);
+
     return (
         <Wrapper className={className}>
             <Container>
-                <div className="title">{tagTitle}</div>
+                <div className="title">{`Restaurant with tag '${tagName}'`}</div>
                 <div className="content-container">
-                    <MerchantBox
+                    {merchants.map((item, index) => {
+                        return (
+                            <MerchantBox
+                                key={index}
+                                merchantName="Xixixi"
+                                starNum={item.rating}
+                                imgUrl={exampleImg}
+                                onClick={() => navigate("/merchants",{state:{mid:item.id}})}
+                            />
+                        );
+                    })}
+                    {/* <MerchantBox
                         merchantName="Xixixi"
                         starNum="9.9"
                         imgUrl={exampleImg}
@@ -80,7 +119,7 @@ const MainContent = ({ className, tagName = 'lalala' }) => {
                         merchantName="Xixixi"
                         starNum="9.9"
                         imgUrl={exampleImg}
-                    />
+                    /> */}
                 </div>
             </Container>
         </Wrapper>

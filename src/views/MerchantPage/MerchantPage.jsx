@@ -1,4 +1,5 @@
 import NavBar from '@/components/navbar/NavBar';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import MainContent from './components/MainContent';
 
@@ -8,12 +9,14 @@ const Wrapper = styled.div`
 
 const Container = styled.div``;
 
-const MerchantPage = props => {
+const MerchantPage = () => {
+    const { state } = useLocation();
+
     return (
         <Wrapper>
             <Container>
                 <NavBar />
-                <MainContent></MainContent>
+                <MainContent mid={state.mid}></MainContent>
             </Container>
         </Wrapper>
     );

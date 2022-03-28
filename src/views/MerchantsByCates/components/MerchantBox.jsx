@@ -13,6 +13,8 @@ const Container = styled.div`
     background-color: #fff;
     border-radius: 2px;
 
+    cursor: pointer;
+
     > .merchant-img {
         width: 180px;
         height: 150px;
@@ -59,10 +61,10 @@ const Container = styled.div`
     }
 `;
 
-const MerchantBox = ({ className, imgUrl, starNum, merchantName }) => {
+const MerchantBox = ({ className, imgUrl, starNum, merchantName,onClick }) => {
     return (
         <Wrapper className={className}>
-            <Container>
+            <Container onClick={onClick}>
                 <div className="merchant-img">
                     <img src={imgUrl} alt="merchant-img" />
                 </div>

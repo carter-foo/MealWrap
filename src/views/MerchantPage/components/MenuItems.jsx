@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import exampleImg from '@/assets/mockimages/image2.jpg';
+// import exampleImg from '@/assets/mockimages/image2.jpg';
 const Wrapper = styled.div`
     width: 100%;
 
@@ -93,15 +93,17 @@ const Container = styled.div`
     }
 `;
 
-const MenuItems = ({ className, id, name = 'Dasani', price = 1.99 }) => {
+const MenuItems = ({ className, id, name = 'Dasani', price = 1.99, imgSrc }) => {
     return (
         <Wrapper className={className}>
             <Container>
                 <div className="item">
+                    {/* {console.log(name)} */}
+                    {/* {console.log(price)} */}
                     <div className="item_name">{name}</div>
-                    <div className="item_price">{'$' + price}</div>
+                    <div className="item_price">{'$ ' + price}</div>
                     <div className="item_img">
-                        <img src={exampleImg} alt="item-img" />
+                        <img src={imgSrc} alt="item-img" />
                     </div>
                     <div className="mask">
                         <div className="add-btn-container">

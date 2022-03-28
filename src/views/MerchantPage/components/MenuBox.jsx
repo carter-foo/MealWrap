@@ -46,19 +46,29 @@ const Container = styled.div`
     }
 `;
 
-const MenuBox = ({ className, title, items }) => {
+const MenuBox = ({ className, products }) => {
     return (
         <Wrapper className={className}>
             <Container>
                 <div className="title">Menu</div>
                 <div className="items">
+                    {console.log(products)}
+                    {products.map((item, index) => {
+                        return (
+                            <MenuItems
+                                key={index}
+                                name={item.name}
+                                price={item.price}
+                                imgSrc={`/api/v1/product/image?id=${item.id}`}
+                            />
+                        );
+                    })}
+                    {/* <MenuItems />
                     <MenuItems />
                     <MenuItems />
                     <MenuItems />
                     <MenuItems />
-                    <MenuItems />
-                    <MenuItems />
-                    <MenuItems />
+                    <MenuItems /> */}
                 </div>
             </Container>
         </Wrapper>

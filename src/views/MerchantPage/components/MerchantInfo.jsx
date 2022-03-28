@@ -45,7 +45,7 @@ const Container = styled.div`
     }
 `;
 
-const MerchantInfo = ({ className }) => {
+const MerchantInfo = ({ className,products }) => {
     return (
         <Wrapper className={className}>
             <Container>
@@ -55,7 +55,7 @@ const MerchantInfo = ({ className }) => {
                         <div className="star">9.9</div>
                     </div>
                 </div>
-                <MenuBox />
+                <MenuBox products={products} />
             </Container>
         </Wrapper>
     );

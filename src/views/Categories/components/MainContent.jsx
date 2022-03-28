@@ -2,6 +2,8 @@ import styled from 'styled-components/macro';
 import CategoryBox from './CategoryBox.jsx';
 import exampleImg from '@/assets/mockimages/image3.jpg';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Wrapper = styled.div`
     margin: 0 auto;
@@ -35,36 +37,41 @@ const Container = styled.div`
 
 const MainContent = ({ className }) => {
     const navigate = useNavigate();
+
+    const [cateData, setCateData] = useState([]);
+    useEffect(() => {
+        const request = async () => {
+            try {
+                const res = await axios.get('/api/v1/tag/all');
+                setCateData(res.data.data);
+            } catch (err) {
+                console.err(err);
+            }
+        };
+
+        request();
+    }, []);
+
     return (
         <Wrapper className={className}>
             <Container>
                 <div className="title">All Categories</div>
                 <div className="content-container">
-                    <CategoryBox
-                        imgUrl={exampleImg}
-                        onClick={() =>
-                            navigate('/merchantsbytag', { state: { tagName: 'Salad' } })
-                        }
-                    >
-                        Salad
-                    </CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
-                    <CategoryBox imgUrl={exampleImg}>Salad</CategoryBox>
+                    {cateData.map((item, index) => {
+                        return (
+                            <CategoryBox
+                                key={index}
+                                imgUrl={exampleImg}
+                                onClick={() =>
+                                    navigate('/merchantsbytag', {
+                                        state: { tagName: item.name },
+                                    })
+                                }
+                            >
+                                {item.name}
+                            </CategoryBox>
+                        );
+                    })}
                 </div>
             </Container>
         </Wrapper>

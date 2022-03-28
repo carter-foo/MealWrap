@@ -2,6 +2,8 @@ import styled from 'styled-components/macro';
 import MerchantInfo from './MerchantInfo';
 import TitlePic from './TitlePic';
 import exampleImg from '@/assets/mockimages/image2.jpg';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Wrapper = styled.div`
     margin: 0 auto;
@@ -35,12 +37,35 @@ const Container = styled.div`
     } */
 `;
 
-const MainContent = ({ className }) => {
+const MainContent = ({ className, mid }) => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        if(!!mid){
+            const request = async () => {
+                try {
+                    const res = await axios('/api/v1/product/merchant_id',{
+                        params:{
+                            merchantId: mid
+                        }
+                    })
+                    console.log(res.data.data);
+                    setProducts(res.data.data);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+            request()
+        }else{
+            setProducts([]);
+        }
+    }, [mid]);
+
     return (
         <Wrapper className={className}>
             <Container>
                 <TitlePic imgSrc={exampleImg} />
-                <MerchantInfo />
+                <MerchantInfo products={products}/>
             </Container>
         </Wrapper>
     );

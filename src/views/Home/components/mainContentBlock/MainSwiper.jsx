@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Swiper from 'react-tiga-swiper';
 import 'react-tiga-swiper/dist/index.css';
-import lodash from 'lodash'
+// import lodash from 'lodash';
 // import image1 from '@/assets/mockimages/image1.jpg';
 // import image2 from '@/assets/mockimages/image2.jpg';
 
@@ -26,10 +26,10 @@ const StyledSwiperItemsWrap = styled.div`
 `;
 
 const toChunk = (ori, nPerArr) => {
-    if(!!!ori){
+    if (!!!ori) {
         return [];
     }
-    console.log(ori);
+    // console.log(ori);
     const newSwiperData = [];
     for (var i = 0, len = ori.length; i < len; i += nPerArr) {
         newSwiperData.push(ori.slice(i, i + nPerArr));
@@ -46,16 +46,30 @@ const toChunk = (ori, nPerArr) => {
     return JSON.parse(JSON.stringify(newSwiperData));
 };
 
-const SwiperApp = ({swiperData}) => {
+const SwiperApp = ({ swiperData }) => {
     const swiperRef = useRef(null);
-    // const [index, setIndex] = useState();
+    const [newSwiperData, setNewSwiperData] = useState([]);
     // const swiperData = ['#99CCCC', '#FFCC99', '#FFCCCC', '#FFFFCC', '#CCFFFF', '#6723EE', '#444444'];
     // const imgUrl = URL.createObjectURL(image1);
     // const swiperData = [image1, image2, image1, image2, image1, image2];
-    let dataArr = lodash.cloneDeep(swiperData);
-    console.log(dataArr);
-    // dataArr.length = 3;
-    const newData = toChunk(dataArr, 2);
+
+    useEffect(() => {
+        let dataArr = [];
+        if(JSON.stringify(swiperData) === '{}'){
+            setNewSwiperData(() => []);
+        }else{
+            for (let i = 0; i < 3; i++) {
+                const ele = swiperData[i];
+                dataArr.push(ele.id);
+            }
+            // let dataArr = lodash.cloneDeep(swiperData);
+            // console.log(dataArr);
+            setNewSwiperData(() => toChunk(dataArr, 2));
+        }
+
+        return () => dataArr = void(0);
+    }, [swiperData]);
+
     // const newData = toChunk([1,2,3,4], 2);
 
     // const swipeTo = () => {
@@ -96,7 +110,7 @@ const SwiperApp = ({swiperData}) => {
                     height: '217px',
                 }}
             >
-                {newData.map((item, key) => (
+                {newSwiperData.map((item, key) => (
                     <StyledSwiperItemsWrap key={key}>
                         {item.map((subItem, key) => {
                             return (
