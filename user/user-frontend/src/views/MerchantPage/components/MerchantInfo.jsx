@@ -45,14 +45,15 @@ const Container = styled.div`
     }
 `;
 
-const MerchantInfo = ({ className,products }) => {
+const MerchantInfo = ({ className,products,mTitle,mRating }) => {
     return (
         <Wrapper className={className}>
             <Container>
                 <div className="m-infos">
-                    <div className="title">Mia Pasta by REEF Kitchens</div>
+                    {/* <div className="title">Mia Pasta by REEF Kitchens</div> */}
+                    <div className="title">{mTitle}</div>
                     <div className="star-wrapper">
-                        <div className="star">9.9</div>
+                        <div className="star">{mRating}</div>
                     </div>
                 </div>
                 <MenuBox products={products} />

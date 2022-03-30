@@ -39,25 +39,32 @@ const Container = styled.div`
 
 const MainContent = ({ className, mid }) => {
     const [products, setProducts] = useState([]);
+    const [merchant, setMerchant] = useState({});
 
     useEffect(() => {
-        if(!!mid){
+        if (!!mid) {
             const request = async () => {
                 try {
-                    const res = await axios('/api/v1/product/merchant_id',{
-                        params:{
-                            merchantId: mid
-                        }
-                    })
-                    console.log(res.data.data);
-                    setProducts(res.data.data);
+                    const resProducts = await axios('/api/v1/product/merchant_id', {
+                        params: {
+                            merchantId: mid,
+                        },
+                    });
+                    const resMerchant = await axios('/api/v1/merchant/id', {
+                        params: {
+                            id: mid,
+                        },
+                    });
+                    // console.log(res.data.data);
+                    setProducts(() => resProducts.data.data);
+                    setMerchant(() => resMerchant.data.data)
                 } catch (error) {
                     console.error(error);
                 }
-            }
-            request()
-        }else{
-            setProducts([]);
+            };
+            request();
+        } else {
+            setProducts(() => []);
         }
     }, [mid]);
 
@@ -65,7 +72,12 @@ const MainContent = ({ className, mid }) => {
         <Wrapper className={className}>
             <Container>
                 <TitlePic imgSrc={exampleImg} />
-                <MerchantInfo products={products}/>
+
+                {/* {console.log("merchant.name",merchant.name)}
+                {console.log("merchant.rating",merchant.rating)}
+                {console.log("products",products)} */}
+
+                <MerchantInfo products={products} mTitle={merchant.name} mRating={merchant.rating}/>
             </Container>
         </Wrapper>
     );

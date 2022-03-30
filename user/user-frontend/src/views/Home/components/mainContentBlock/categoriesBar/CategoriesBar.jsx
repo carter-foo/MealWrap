@@ -34,7 +34,7 @@ const CateBar = () => {
                 const res = await axios.get('/api/v1/tag/all');
                 const newData = res.data.data;
                 newData.length = 5;
-                console.log(newData);
+                // console.log(newData);
                 setCateData(newData);
             } catch (err) {
                 console.err(err);

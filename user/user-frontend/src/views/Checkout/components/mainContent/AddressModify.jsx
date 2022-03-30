@@ -1,5 +1,9 @@
 import styled from 'styled-components/macro';
 import { ReactComponent as MapImg } from '@/assets/mockimages/map.svg';
+import { useRecoilValue } from 'recoil';
+import { loginInfo } from '@/store/loginStore';
+import { userAddress } from '@/store/store';
+
 
 const Wrapper = styled.div`
     /* height: 100%; */
@@ -30,6 +34,9 @@ const Container = styled.div`
 `;
 
 const AddressModify = props => {
+    const logInfo = useRecoilValue(loginInfo);
+    const userAdd = useRecoilValue(userAddress)
+
     return (
         <Wrapper>
             <Container>
@@ -39,9 +46,9 @@ const AddressModify = props => {
                         <MapImg />
                     </div>
                     <div className="address_content">
-                        <p className="addressee">Office</p>
+                        <p className="addressee">{logInfo.phone}</p>
                         <p className="addresses">
-                            Adi Sucipto St. No. 23, Solo, Central Java, Indonesia
+                           {userAdd}
                         </p>
                     </div>
                 </div>

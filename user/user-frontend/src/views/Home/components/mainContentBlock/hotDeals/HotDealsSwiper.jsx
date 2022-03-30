@@ -86,7 +86,7 @@ const SwiperApp = ({swiperData}) => {
         // }
     }, [swiperData])
     
-    console.log('HotDeals', newData);
+    // console.log('HotDeals', newData);
 
     return (
         <>

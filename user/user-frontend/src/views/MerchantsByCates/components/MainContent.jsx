@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 import MerchantBox from './MerchantBox';
-import exampleImg from '@/assets/mockimages/image4.jpg';
+// import exampleImg from '@/assets/mockimages/image4.jpg';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -73,9 +73,9 @@ const MainContent = ({ className, tagName = 'Offers' }) => {
                         return (
                             <MerchantBox
                                 key={index}
-                                merchantName="Xixixi"
+                                merchantName={item.name}
                                 starNum={item.rating}
-                                imgUrl={exampleImg}
+                                imgUrl={`/api/v1/merchant/image?id=${item.id}`}
                                 onClick={() => navigate("/merchants",{state:{mid:item.id}})}
                             />
                         );

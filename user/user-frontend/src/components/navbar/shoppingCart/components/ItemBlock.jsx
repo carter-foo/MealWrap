@@ -51,7 +51,7 @@ const Container = styled.div`
     }
 `;
 
-const ItemBlock = ({ iIndex, mIndex, title, price, amount }) => {
+const ItemBlock = ({ item }) => {
     // const { infoArr } = useContext(merchantContext);
     return (
         <Wrapper>
@@ -60,11 +60,15 @@ const ItemBlock = ({ iIndex, mIndex, title, price, amount }) => {
                     <img src={seafoodImg} alt="seafoodImg" />
                 </div>
                 <div className="info">
-                    <div className="title">{title}</div>
+                    <div className="title">{item.name}</div>
                     <div className="price-amount">
-                        <div className="price">{price}</div>
+                        <div className="price">{item.price}</div>
                         <div className="amount">
-                            <AddSub iIndex={iIndex} mIndex={mIndex} amount={amount} />
+                            <AddSub
+                                itemId={item.id}
+                                mId={item.merchantId}
+                                quantity={item.quantity}
+                            />
                         </div>
                     </div>
                 </div>
