@@ -1,1 +1,5 @@
 # MealWrap
+
+This is an application called MealWrap, which provides a service similar to SkipTheDishes or UberEats in which useras can order food from nearby restaurants. It was developed as a term project for the SENG 401 course at the University of Calgary.
+
+Ideally, this system should have been deployed to a cloud server accessible via the instructions provided with the project submission, but if there is an issue with the deployment or if you wish to run each component in development mode, please follow these instructions: Ensure that you have Node.js, Docker, and Java installed, and then navigate to each of restaurant/restaurant-frontend, restaurant/restaurant-backend, user/user-frontend, and user/user-backend and follow each of the README files in those directories to run each component. Additionally, you will need to create a MySQL database using the schema and data files in the database directory and change the MySQL parameters in both of the backend components to connect to the database you created.
