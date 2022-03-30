@@ -27,7 +27,9 @@ const toChunk = (ori, nPerArr) => {
     let theLastArr = newSwiperData[newSwiperData.length - 1];
 
     if (theLastArr.length < nPerArr) {
-        newSwiperData[newSwiperData.length - 1] = theLastArr.concat(ori.slice(0, nPerArr - theLastArr.length));
+        newSwiperData[newSwiperData.length - 1] = theLastArr.concat(
+            ori.slice(0, nPerArr - theLastArr.length),
+        );
     }
 
     return JSON.parse(JSON.stringify(newSwiperData));
@@ -36,7 +38,15 @@ const toChunk = (ori, nPerArr) => {
 const SwiperApp = () => {
     const swiperRef = useRef(null);
     // const [index, setIndex] = useState();
-    const swiperData = ['#99CCCC', '#FFCC99', '#FFCCCC', '#FFFFCC', '#CCFFFF', '#6723EE', '444444'];
+    const swiperData = [
+        '#99CCCC',
+        '#FFCC99',
+        '#FFCCCC',
+        '#FFFFCC',
+        '#CCFFFF',
+        '#6723EE',
+        '444444',
+    ];
 
     const newData = toChunk(swiperData, 2);
 
@@ -91,4 +101,4 @@ const SwiperApp = () => {
 };
 
 export default SwiperApp;
-export {toChunk};
+export { toChunk };

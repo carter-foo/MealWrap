@@ -2,6 +2,7 @@
 // import styled from 'styled-components/macro';
 import 'normalize.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import routes from './views/routerConfig';
 // import Login from './components/Login';
 
@@ -68,15 +69,17 @@ import routes from './views/routerConfig';
 function App() {
     console.log(routes);
     return (
-        <BrowserRouter>
-            <Routes>
-                {/* <Route path="/" element={<Lalala />}/> */}
-                {routes.map(routeObj => (
-                    <Route key={routeObj.path} {...routeObj} />
-                ))}
-                {/* <Route path='/login' element={<Login />}></Route> */}
-            </Routes>
-        </BrowserRouter>
+        <RecoilRoot>
+            <BrowserRouter>
+                <Routes>
+                    {/* <Route path="/" element={<Lalala />}/> */}
+                    {routes.map(routeObj => (
+                        <Route key={routeObj.path} {...routeObj} />
+                    ))}
+                    {/* <Route path='/login' element={<Login />}></Route> */}
+                </Routes>
+            </BrowserRouter>
+        </RecoilRoot>
     );
 }
 

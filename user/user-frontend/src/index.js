@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    html,body{
+        height: 100%;
+    }
+
     body{
         margin: 0 auto;
         background-color: rgb(245, 243, 241);
@@ -30,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     #root{
-        /* min-height:100vh; */
+        height:100%;
     }
 `;
 
@@ -41,7 +45,7 @@ ReactDOM.render(
             <GlobalStyle />
         </Fragment>
     </React.StrictMode>,
-    document.getElementById('root')
+    document.getElementById('root'),
 );
 
 /* Test components */

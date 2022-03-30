@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+
+  redis:
+    image: redis:6.0-alpine
+    container_name: mealwrap-redis
+    ports:
+      - "16379:6379"
+    networks:
+      backend_network:
+        ipv4_address: 177.77.0.4
+
+  db:
+    image: mysql:8.0
+    container_name: mealwrap-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - "MYSQL_ROOT_PASSWORD=123456"
+      - "MYSQL_DATABASE=mealwrap"
+    ports:
+      - "13306:3306"
+    networks:
+      backend_network:
+        ipv4_address: 177.77.0.2
+
+  springboot:
+    container_name: mealwrap-springboot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - "db"
+      - "redis"
+    ports:
+      - "18080:8080"
+    networks:
+      backend_network:
+        ipv4_address: 177.77.0.3
+    tty: true
+
+networks:
+  backend_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 177.77.0.0/16
+          gateway: 177.77.0.1
