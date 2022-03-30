@@ -108,7 +108,7 @@ const SwiperApp = () => {
 
     const newData = toChunk(swiperData, 3);
 
-    console.log('TOTW', newData);
+    // console.log('TOTW', newData);
 
     // const swipeTo = () => {
     //     const swiperInstance = swiperRef.current;

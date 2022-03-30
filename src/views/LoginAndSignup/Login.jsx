@@ -176,8 +176,8 @@ const Login = () => {
                 password,
             });
             console.log(res.data.data);
-            setInfo({ phone, token: res.data.data });
-            sessionStorage.setItem("userInfos",JSON.stringify({ phone, token: res.data.data }))
+            setInfo({ phone, ...res.data.data });
+            sessionStorage.setItem("userInfos",JSON.stringify({ phone, ...res.data.data }))
             console.log("info: ", info);
             navigate("/",{state:info});
         } catch (err) {

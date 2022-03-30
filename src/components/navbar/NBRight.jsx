@@ -86,7 +86,7 @@ const NBRight = () => {
 
             <div className="loginBros">
                 {/* <Icon src={loginIcon} outerSize="44px" innerSize="25px" /> */}
-                {console.log(!!info.phone)}
+                {/* {console.log(!!info.phone)} */}
                 {!!info.phone ? (
                     <div className="titleWelcome">
                         <p>Welcome! {info.phone}</p>

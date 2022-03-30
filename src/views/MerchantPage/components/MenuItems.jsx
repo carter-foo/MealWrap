@@ -1,5 +1,10 @@
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components/macro';
-// import exampleImg from '@/assets/mockimages/image2.jpg';
+import { shoppingCartArr } from '@/store/store';
+import lodash from 'lodash';
+import axios from 'axios';
+import { loginInfo } from '@/store/loginStore';
+
 const Wrapper = styled.div`
     width: 100%;
 
@@ -93,7 +98,97 @@ const Container = styled.div`
     }
 `;
 
-const MenuItems = ({ className, id, name = 'Dasani', price = 1.99, imgSrc }) => {
+const MenuItems = ({
+    className,
+    id,
+    name = 'Dasani',
+    price = 1.99,
+    imgSrc,
+    itemId,
+    mId,
+    item,
+}) => {
+    const logInfo = useRecoilValue(loginInfo);
+
+    const [scArrNow, setSCArr] = useRecoilState(shoppingCartArr);
+
+    const insertIntoCart = () => {
+        let scArr = lodash.cloneDeep(scArrNow);
+        let oriSC = lodash.cloneDeep(scArrNow);
+
+        const insertRequest = () => {
+            axios
+                .post('/api/v1/shoppingcart/insert', {
+                    userId: logInfo.id,
+                    productId: itemId,
+                })
+                .then(res => {
+                    console.log(res.data);
+                    try {
+                        if (res.data.code === 400) {
+                            setSCArr(oriSC);
+                            throw new Error('Insert item failed');
+                        }
+                    } catch (err) {
+                        console.error(err);
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        };
+
+        const updateRequest = quantity => {
+            axios
+                .post('/api/v1/shoppingcart/update', {
+                    userId: logInfo.id,
+                    productId: itemId,
+                    quantity,
+                })
+                .then(res => {
+                    console.log('updated', res.data);
+                    try {
+                        if (res.data.code === 400) {
+                            setSCArr(oriSC);
+                            throw new Error('Modify quantity failed');
+                        }
+                    } catch (err) {
+                        console.error(err);
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        };
+
+        console.log("mid",mId);
+
+        const theMerchant = scArr.filter(merchant => {
+            return merchant[0].merchantId === mId;
+        });
+
+        console.log('theMerchant',theMerchant);
+        
+        if (JSON.stringify(theMerchant) === '[]') {
+            insertRequest();
+            console.log(item);
+            scArr.unshift([{...item,quantity:1}]);
+        } else {
+            const existMerchant = theMerchant[0];
+            const itemArrWithEqualID = existMerchant.filter(itemEle => {
+                return itemEle.id === itemId;
+            });
+            if (JSON.stringify(itemArrWithEqualID) === '[]') {
+                insertRequest();
+                existMerchant.push({...item,quantity:1});
+            } else {
+                itemArrWithEqualID[0].quantity += 1;
+                updateRequest(itemArrWithEqualID[0].quantity);
+            }
+        }
+        setSCArr(scArr);
+    };
+
     return (
         <Wrapper className={className}>
             <Container>
@@ -106,7 +201,7 @@ const MenuItems = ({ className, id, name = 'Dasani', price = 1.99, imgSrc }) => 
                         <img src={imgSrc} alt="item-img" />
                     </div>
                     <div className="mask">
-                        <div className="add-btn-container">
+                        <div className="add-btn-container" onClick={() => insertIntoCart()}>
                             <div className="add-btn">Add to Cart</div>
                         </div>
                     </div>

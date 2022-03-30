@@ -26,15 +26,21 @@ const Icon = styled(RoundIcon)`
     }
 `;
 
-const NBRight = () => {
+const NBRight = ({ logInfo }) => {
     return (
         <Wrapper>
-            <div className="loginBros">
-                <Icon src={loginIcon} outerSize="44px" innerSize="25px" />
-                <div className="title">
-                    <p>Log In</p>
+            {JSON.stringify(logInfo) === '{}' ? (
+                <div className="loginBros">
+                    <Icon src={loginIcon} outerSize="44px" innerSize="25px" />
+                    <div className="title">
+                        <p>Log In</p>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="title">
+                    <p>{`Welcome! ${logInfo.phone}`}</p>
+                </div>
+            )}
         </Wrapper>
     );
 };

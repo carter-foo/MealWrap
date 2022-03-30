@@ -1,5 +1,7 @@
 import styled from 'styled-components/macro';
 import SeparatorBarDashed from './SeparatorBarDashed';
+import lodash from 'lodash'
+
 
 const Wrapper = styled.div`
     height: 100%;
@@ -38,22 +40,37 @@ const StyledSeparatorBarDashed = styled(SeparatorBarDashed)`
     margin: 16px 0;
 `;
 
-const TotalPrices = props => {
+const TotalPrices = ({subTotalPrice,tipPercent,deliveryFee, tax}) => {
+
+
+    // useEffect(() => {
+    //     setDeliveryFee(lodash.floor(totalPrice*0.04,2));
+    // },[totalPrice])
+
     return (
         <Wrapper>
             <Container>
                 <PriceBlock>
                     <div className="title">Shipping Cost</div>
-                    <div className="prices">$5.31</div>
+                    <div className="prices">${deliveryFee}</div>
+                </PriceBlock>
+                <PriceBlock>
+                    <div className="title">Tip</div>
+                    <div className="prices">${lodash.floor(subTotalPrice*tipPercent,2)}</div>
+                </PriceBlock>
+                <PriceBlock>
+                    <div className="title">Tax</div>
+                    <div className="prices">${tax}</div>
                 </PriceBlock>
                 <PriceBlock>
                     <div className="title">Sub total</div>
-                    <div className="prices">$16.00</div>
+                    <div className="prices">${lodash.floor(subTotalPrice,2)}</div>
                 </PriceBlock>
                 <StyledSeparatorBarDashed />
                 <PriceBlock>
                     <div className="total_title">Total</div>
-                    <div className="total_prices">$5.31</div>
+                    {/* {console.log(deliveryFee,tax,lodash.floor(subTotalPrice*tipPercent,2),subTotalPrice)} */}
+                    <div className="total_prices">${lodash.floor(deliveryFee+tax+lodash.floor(subTotalPrice*tipPercent,2)+subTotalPrice,2)}</div>
                 </PriceBlock>
             </Container>
         </Wrapper>

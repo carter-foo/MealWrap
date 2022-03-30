@@ -15,12 +15,12 @@ const Container = styled.div`
     justify-content: space-between;
 `;
 
-const NavBar = props => {
+const NavBar = ({ logInfo }) => {
     return (
         <Wrapper>
             <Container>
                 <NBLeft />
-                <NBRight />
+                <NBRight logInfo={logInfo} />
             </Container>
         </Wrapper>
     );

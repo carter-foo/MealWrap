@@ -67,7 +67,7 @@ const SwiperApp = ({ swiperData }) => {
             setNewSwiperData(() => toChunk(dataArr, 2));
         }
 
-        return () => dataArr = void(0);
+        return () => dataArr = null;
     }, [swiperData]);
 
     // const newData = toChunk([1,2,3,4], 2);

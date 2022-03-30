@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 import CategoryBox from './CategoryBox.jsx';
-import exampleImg from '@/assets/mockimages/image3.jpg';
+// import exampleImg from '@/assets/mockimages/image3.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -57,11 +57,12 @@ const MainContent = ({ className }) => {
             <Container>
                 <div className="title">All Categories</div>
                 <div className="content-container">
+                    {console.log('cateData',cateData)}
                     {cateData.map((item, index) => {
                         return (
                             <CategoryBox
                                 key={index}
-                                imgUrl={exampleImg}
+                                imgUrl={`/api/v1/tag/image?id=${item.id}`}
                                 onClick={() =>
                                     navigate('/merchantsbytag', {
                                         state: { tagName: item.name },

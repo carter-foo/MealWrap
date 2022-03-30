@@ -1,4 +1,5 @@
-import { createContext } from 'react';
+import axios from 'axios';
+import { createContext, useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import ItemBlock from './ItemBlock';
 import TotalBlock from './TotalBlock';
@@ -17,55 +18,56 @@ const Container = styled.div`
     }
 `;
 
-// const ccc = {
-//     merchantName: "Cactus Club Cafe",
-//     items: [{
-//         name:"lalalaDddddd",
-//         price:"10.69",
-//         amount:1
-//     },{
-//         name:"lalala",
-//         price:"10.69",
-//         amount:1
-//     },{
-//         name:"lalala",
-//         price:"10.69",
-//         amount:1
-//     },{
-//         name:"lalala",
-//         price:"10.69",
-//         amount:1
-//     },{
-//         name:"lalala",
-//         price:"10.69",
-//         amount:1
-//     }]
-// }
+const MerchantBlock = ({ items }) => {
+    const [merchantTitle, setMerchantTitle] = useState('');
+    const [totalP, setTotalP] = useState(0.0);
 
-const MerchantBlock = ({ merchant, mIndex }) => {
+    
+    useEffect(() => {
+        console.log(items[0].merchantId);
+        axios
+            .get('/api/v1/merchant/id', {
+                params: {
+                    id: items[0].merchantId,
+                },
+            })
+            .then(res => {
+                // console.log(res.data.data);
+                setMerchantTitle(res.data.data.name);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [items[0].merchantId]);
+
+    useEffect(() => {
+        // console.log('items', items);
+
+        setTotalP(0.0);
+
+        items.forEach(ele => {
+            setTotalP(ori => ori + ele.quantity * ele.price);
+        });
+    }, [items]);
+
     return (
-        <merchantContext.Provider value={{ mIndex }}>
-            <Wrapper>
-                <Container>
-                    <div className="merchant-link">{merchant.merchantName}</div>
-                    <div className="items">
-                        {merchant.items.map((item, index) => {
-                            return (
-                                <ItemBlock
-                                    key={index}
-                                    iIndex={index}
-                                    mIndex={mIndex}
-                                    title={item.name}
-                                    price={item.price}
-                                    amount={item.amount}
-                                />
-                            );
-                        })}
-                    </div>
-                    <TotalBlock />
-                </Container>
-            </Wrapper>
-        </merchantContext.Provider>
+        // <merchantContext.Provider value={{ mIndex }}>
+        <Wrapper>
+            <Container>
+                {/* {console.log(merchantTitle)} */}
+                <div className="merchant-link">{merchantTitle}</div>
+                <div className="items">
+                    {items.map((item, index) => {
+                        return <ItemBlock key={index} item={item} />;
+                    })}
+                </div>
+                {/* {console.log(totalP)} */}
+                <TotalBlock totalPrice={totalP} mId={items[0].merchantId} items={items} mTitle={merchantTitle}/>
+            </Container>
+        </Wrapper>
+        // </merchantContext.Provider>
     );
 };
 
