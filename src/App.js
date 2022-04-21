@@ -2,10 +2,7 @@ import 'normalize.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import routes from './views/routerConfig';
-// import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://164.92.116.243:18080';
-// axios.defaults.baseURL = 'http://localhost:18080';
 
 
 

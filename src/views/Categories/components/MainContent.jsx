@@ -62,7 +62,7 @@ const MainContent = ({ className }) => {
                         return (
                             <CategoryBox
                                 key={index}
-                                imgUrl={`/api/v1/tag/image?id=${item.id}`}
+                                imgUrl={`${process.env.REACT_APP_staticPath}/api/v1/tag/image?id=${item.id}`}
                                 onClick={() =>
                                     navigate('/merchantsbytag', {
                                         state: { tagName: item.name },

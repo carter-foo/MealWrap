@@ -75,7 +75,7 @@ const MainContent = ({ className, tagName = 'Offers' }) => {
                                 key={index}
                                 merchantName={item.name}
                                 starNum={item.rating}
-                                imgUrl={`/api/v1/merchant/image?id=${item.id}`}
+                                imgUrl={`${process.env.REACT_APP_staticPath}/api/v1/merchant/image?id=${item.id}`}
                                 onClick={() => navigate("/merchants",{state:{mid:item.id}})}
                             />
                         );

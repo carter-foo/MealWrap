@@ -62,7 +62,7 @@ const MenuBox = ({ className, products }) => {
                                 item={item}
                                 itemId={item.id}
                                 mId={item.merchantId}
-                                imgSrc={`/api/v1/product/image?id=${item.id}`}
+                                imgSrc={`${process.env.REACT_APP_staticPath}/api/v1/product/image?id=${item.id}`}
                             />
                         );
                     })}

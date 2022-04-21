@@ -117,7 +117,7 @@ const SwiperApp = ({ swiperData }) => {
                                 <div
                                     key={key}
                                     style={{
-                                        backgroundImage: `url('/api/v1/product/image?id=${subItem}')`,
+                                        backgroundImage: `url('${process.env.REACT_APP_staticPath}/api/v1/product/image?id=${subItem}')`,
                                     }}
                                 ></div>
                             );

@@ -6,6 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import 'normalize.css';
 import { createGlobalStyle } from 'styled-components/macro';
 
+import axios from 'axios';
+
+// axios.defaults.baseURL = 'https://164.92.116.243:18080';
+axios.defaults.baseURL = process.env.REACT_APP_staticPath;
+
 const GlobalStyle = createGlobalStyle`
     /* body {
         margin: 0;
